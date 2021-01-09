@@ -1,0 +1,18 @@
+.tab-selected{
+    ion-icon{
+        background: #fff;
+        color: #00314f;
+        border-radius: 25px;
+        padding: 5%;
+    }
+    span{
+        font-weight: bold;
+        margin-top: 0.4em;
+    }
+}
+ion-tab-button{
+    span{
+        font-weight: bold;
+        margin-top: 0.4em;
+    }
+}

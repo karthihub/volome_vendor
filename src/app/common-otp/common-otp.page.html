@@ -1,0 +1,73 @@
+<ion-content>
+  <div style="background-image: url(../../assets/images/bg.png);
+  width: 100%;
+  height: 100%;
+  background-attachment: fixed;
+  background-size: contain;
+  background-repeat: round;">
+  <div>
+    <img src="../../assets/images/logo_white.png" style="margin: 15% 0%;
+    padding: 5%;opacity: 0.5;"/>
+  </div>
+
+
+  <div style="    width: 100%;
+  height: 53%;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;">
+  <!-- <img src="../../assets/images/line.jpg" style="display: block;
+  border-radius: 25px 25px 0 0;
+  width: 90%;
+  margin: 0% auto -1.5% auto;
+  z-index: -1;"> -->
+  <div style="background: #fff;
+  border-radius: 25px 25px 0 0;
+  z-index: 46;
+  position: absolute;
+  width: 100%;
+  height: 100%;">
+
+<img src="../../assets/images/vendor_icon.svg" style="    display: block;
+border-radius: 60px;
+width: 7em;
+height: 7em;
+margin: -12% auto -5% auto;
+z-index: -1;
+border: 5px solid #ff8635;
+padding: 5%;
+background: #fff;">
+
+<div style=" padding: 5%;">
+  <p style="color: #000;
+  text-align: center;
+  font-size: 1em;
+  font-weight: 600;">Vendor Login</p>
+
+<p style="margin: 0px 0 -7% 0;
+color: #fff;
+font-size: 0.8em;">Verify OTP</p>
+  <ion-item style="border-radius: 10px;margin-top: 10%; --background: #fff7f4;border: 1px solid #f87d15;">
+    <ion-input placeholder="Enter your OTP" type="tel" [(ngModel)]="req.otp" maxlength="6"></ion-input>
+    <ion-icon name="call-outline" slot="start" style="color:#ff8635;"></ion-icon>
+  </ion-item>
+
+  <ion-button shape="round" style="--background: #003e64;
+  margin: 10% auto;
+  display: table;" (click)="submitOTP()">Submit OTP</ion-button>
+
+  <p style="text-align: center;
+  color: #003e64;
+  font-size: 0.8em;
+  margin-top: 15%;">OTP expires in 00:29
+    <span style="color: #ff8635;
+    text-decoration: underline;" >Resend OTP</span>
+  </p>
+
+</div>
+</div>
+
+  </div>
+  </div>
+</ion-content>

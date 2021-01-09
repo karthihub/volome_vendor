@@ -1,0 +1,31 @@
+<!-- <ion-header>
+  <ion-toolbar>
+      <ion-searchbar id="pac-input" type="text" placeholder="Enter a location"></ion-searchbar>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content [fullscreen]="true">
+  <div class="search-inp">
+    <input id="pac-input" type="text" no-line placeholder="Enter Location" style=" --background: #fff7f4;border: 1px solid #f87d15;"/>
+  </div>
+  <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="locate-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab> -->
+  <div #map id="map"></div>
+</ion-content>
+
+<ion-footer class="ion-no-border myColor">
+  <ion-toolbar style="
+    --background: #ff8635;
+    --color: #fff;">
+    <ion-button (click)="dismiss()" style="width: auto;margin-bottom: unset;--background: transparent;
+    --box-shadow: none;
+    border: 1px solid #fff;
+    border-radius: 25px;">
+      <ion-icon slot="start" name="location-outline"></ion-icon>
+      Use Current Location
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

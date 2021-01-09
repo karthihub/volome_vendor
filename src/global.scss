@@ -1,0 +1,88 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+@font-face {
+    font-family: 'gilroy-light';
+    src: url('assets/fonts/Gilroy-Light.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+font-family: 'gilroy-bold';
+src: url('assets/fonts/Gilroy-ExtraBold.otf') format('opentype');
+font-weight: normal;
+font-style: normal;
+}
+@font-face {
+font-family: 'gilroy-Medium';
+src: url('assets/fonts/Gilroy-Medium.otf') format('opentype');
+font-weight: normal;
+font-style: normal;
+}
+* {
+    font-family: 'gilroy-light' !important;
+  }
+ion-toolbar{
+    --background: #00314f;
+    --color: #fff;
+}
+
+.searchbar-input{
+    --border-radius: 25px;
+}
+
+.swiper-pagination{
+    display: none;
+}
+
+
+rating {
+    ion-buttons{
+      margin-left: -2%;
+      margin-top: -5%;
+      width: 70%;
+        .button-default{
+            --padding-top: unset !important;
+            --padding-bottom: unset !important;
+            --padding-start: unset !important;
+            --padding-end: unset !important;
+            margin: unset;
+            margin-left: -8% !important;
+        }
+    }
+    ion-icon {
+      color: rgb(131, 127, 127) !important;
+  
+      &.filled {
+        color: red !important;
+      }
+    }
+  }
+.white-text{
+    color: white;
+}
