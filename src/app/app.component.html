@@ -1,14 +1,26 @@
 <ion-app>
   <ion-split-pane contentId="main-content">
     <ion-menu side="start" menuId="first" contentId="main-content">
-      <ion-content>
-        <ion-list>
-          <ion-item>Menu Item</ion-item>
-          <ion-item>Menu Item</ion-item>
-          <ion-item>Menu Item</ion-item>
-          <ion-item>Menu Item</ion-item>
-          <ion-item>Menu Item</ion-item>
-        </ion-list>
+      <ion-content style="--background: #f0f7fc;">
+
+          <ion-avatar style="display: block;
+          margin: 15% auto 2% auto;
+          border: 5px solid #ff8635;
+          width: 6em;
+          height: 6em;">
+            <img src="../assets/images/deliveryboy_icon.png">
+          </ion-avatar>
+          <p style="text-align: center;
+          font-size: 1em;
+          font-weight: bolder;">Mobile : 8220285323</p>
+          <ion-menu-toggle auto-hide="false" >
+            <ion-list style="padding: 0;">
+              <ion-item style="border-left: 10px solid #ff8635;" lines="none" routerDirection="forward" detail="false" routerLink="dashboard/my-wallet">
+                <ion-label style="font-weight: bolder;">My Wallet</ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-menu-toggle>
+
       </ion-content>
     </ion-menu>
   <ion-router-outlet id="main-content"></ion-router-outlet>

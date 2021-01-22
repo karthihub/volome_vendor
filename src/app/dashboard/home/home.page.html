@@ -9,7 +9,183 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content style="--background: #ff8635;">
+  <div style="background: #fff;
+  border-radius: 25px 25px 0 0;
+  z-index: 46;
+  position: absolute;
+  width: 100%;
+  margin-top: 25%;">
+
+    <img src="../../assets/images/deliveryboy_icon.png" style="display: block;
+    border-radius: 60px;
+    width: 7em;
+    height: 7em;
+    margin: -15% auto auto auto;
+    z-index: -1;
+    border: 5px solid #ff8635;
+    padding: 2%;
+    background: #fff;">
+
+    <p style="    margin: 1%;
+    text-align: center;
+    color: #ff8635;
+    font-weight: bolder;
+    font-size: 1em;">{{homeProperty.vendor_name}}</p>
+    <p style="margin: 1%;
+    text-align: center;
+    color: #00314f;
+    font-weight: bolder;
+    font-size: 0.85em;margin-bottom: 5%;">Vendor ID : {{homeProperty.vendorid}}</p>
+
+<ion-grid>
+  <ion-row style="padding: 1%;">
+    <ion-col size="9" style="background:#00314f;color:#fff;margin-left: 2%;border-radius: 10px;">
+      <ion-item lines="none" style="--background:#00314f;color:#fff;"> 
+        <ion-label style="white-space: unset;
+        overflow: auto;">
+          <span style="font-weight: bolder;
+          display: block;
+          font-size: 1em;
+          opacity: 0.8;">Today Orders</span>
+          <!-- <span style="display: block;
+          font-size: 0.8em;
+          opacity: 0.5;
+          margin-top: 5%;
+          font-weight: 600;">11th Jan 2021</span> -->
+        </ion-label>
+        <ion-note slot="end" style="font-size: 1.2em;
+        color: #fff;
+        font-weight: bolder;    padding: 0;
+    margin: 0;margin-top: 10%;">{{homeProperty.total_orders}}</ion-note>
+      </ion-item>
+    </ion-col>
+    <ion-col (click)="wallerPage()" size="2" style="background: #ff8635 !important;color: #fff;margin-left: 2%;border-radius: 10px;">
+      <img style="width: 100%;display: block;margin: 18% auto;padding: 5%;" src="../../../assets/images/check-list.svg">
+    </ion-col>
+  </ion-row>
+
+  <!-- <ion-row style="padding: 1%;">
+    <ion-col size="9" style="background:#00314f;color:#fff;margin-left: 2%;border-radius: 10px;">
+      <ion-item lines="none" style="--background:#00314f;color:#fff;"> 
+        <ion-label style="white-space: unset;
+        overflow: auto;">
+          <span style="font-weight: bolder;
+          display: block;
+          font-size: 1em;
+          opacity: 0.8;">Today Revenue</span>
+          <span style="display: block;
+          font-size: 0.8em;
+          opacity: 0.5;
+          margin-top: 5%;
+          font-weight: 600;">Since 1st Jan 2021</span>
+        </ion-label>
+        <ion-note slot="end" style="font-size: 1.2em;
+        color: #fff;
+        font-weight: bolder;    padding: 0;
+    margin: 0;margin-top: 10%;">₹ 71,395</ion-note>
+      </ion-item>
+    </ion-col>
+    <ion-col size="2" style="background: #ff8635 !important;color: #fff;margin-left: 2%;border-radius: 10px;">
+      <img style="width: 100%;display: block;margin: 18% auto;padding: 5%;" src="../../../assets/images/revenue.svg">
+    </ion-col>
+  </ion-row> -->
+
+  <ion-row style="padding: 1%;">
+    <ion-col size="9" style="background:#00314f;color:#fff;margin-left: 2%;border-radius: 10px;">
+      <ion-item lines="none" style="--background:#00314f;color:#fff;"> 
+        <ion-label style="white-space: unset;
+        overflow: auto;">
+          <span style="font-weight: bolder;
+          display: block;
+          font-size: 1em;
+          opacity: 0.8;">Total Products</span>
+          <!-- <span style="display: block;
+          font-size: 0.8em;
+          opacity: 0.5;
+          margin-top: 5%;
+          font-weight: 600;">10 Categories</span> -->
+        </ion-label>
+        <ion-note slot="end" style="font-size: 1.2em;
+        color: #fff;
+        font-weight: bolder;    padding: 0;
+    margin: 0;margin-top: 10%;">{{homeProperty.total_product}}</ion-note>
+      </ion-item>
+    </ion-col>
+    <ion-col size="2" style="background: #ff8635 !important;color: #fff;margin-left: 2%;border-radius: 10px;">
+      <img style="width: 100%;display: block;margin: 18% auto;padding: 5%;" src="../../../assets/images/check-list.svg">
+    </ion-col>
+  </ion-row>
+
+  <ion-row style="padding: 1%;">
+    <ion-col size="9" style="background:#00314f;color:#fff;margin-left: 2%;border-radius: 10px;">
+      <ion-item lines="none" style="--background:#00314f;color:#fff;"> 
+        <ion-label style="white-space: unset;
+        overflow: auto;">
+          <span style="font-weight: bolder;
+          display: block;
+          font-size: 1em;
+          opacity: 0.8;">Today Sales</span>
+          <!-- <span style="display: block;
+          font-size: 0.8em;
+          opacity: 0.5;
+          margin-top: 5%;
+          font-weight: 600;">Since 1st Jan 2021</span> -->
+        </ion-label>
+        <ion-note slot="end" style="font-size: 1.2em;
+        color: #fff;
+        font-weight: bolder;    padding: 0;
+    margin: 0;margin-top: 10%;">₹ {{homeProperty.total_sale}}</ion-note>
+      </ion-item>
+    </ion-col>
+    <ion-col size="2" style="background: #ff8635 !important;color: #fff;margin-left: 2%;border-radius: 10px;">
+      <img style="width: 100%;display: block;margin: 18% auto;padding: 5%;" src="../../../assets/images/check-list.svg">
+    </ion-col>
+  </ion-row>
+  
+</ion-grid>
+
+<ion-button style="--background: #26b30f;
+margin: 5% auto;
+display: table;">Achivement</ion-button>
+
+
+<ion-list style="padding: 4%;">
+  <ion-list-header style="    margin: 0;
+  padding: 0;
+  font-size: 0.9em;
+  font-weight: bolder;
+  color: #00314f;">
+    Today Orders
+  </ion-list-header>
+  <div *ngIf="orderData.length > 0">
+  <ion-item style="--background: #f4f4f4;margin-bottom: 2%;" *ngFor="let order of orderData">
+    <ion-label>
+      <span style="font-weight: bolder;
+          display: block;
+          font-size: 1em;
+          opacity: 1;">Order ID : {{order.orderid}}</span>
+          <span style="display: block;
+          font-size: 0.8em;
+          opacity: 0.8;
+          font-weight: 600;">{{order.date}} | {{order.location}}</span>
+    </ion-label>
+    <ion-note slot="end" style="font-size: 1.2em;
+    font-weight: bolder;
+    color: #ff8635;
+    background: #ECECEC;
+    padding: 5.5%;
+    margin-right: -5%;">₹ {{order.total}}</ion-note>
+  </ion-item>
+</div>
+<ion-item style="border-left: 10px solid #ff8635;" lines="none" *ngIf="orderData.length == 0">
+  <ion-label style="font-weight: bolder;">No Orders Found.</ion-label>
+</ion-item>
+</ion-list>
+
+  </div>
+
   
 
 </ion-content>
+

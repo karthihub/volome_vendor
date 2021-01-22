@@ -1,0 +1,128 @@
+<ion-header class="ion-no-border" >
+  <ion-toolbar style="padding: 0;">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      My Wallet
+    </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background: #ff8635;">
+
+  <p style="padding: 0;
+  margin: 5% auto 1% auto;
+  text-align: center;
+  font-size: 2em;
+  color: #fff;
+  font-weight: bold;">₹ {{walletProperty.total_wallet}}</p>
+  <p style="    padding: 0;
+  margin: 0% auto 1% auto;
+  text-align: center;
+  font-size: 1em;
+  color: #fff;
+  font-weight: 600;
+  opacity: 0.7;">total amount in wallet</p>
+
+
+  <div style="background: #fff;
+  border-radius: 25px 25px 0 0;
+  z-index: 46;
+  position: absolute;
+  width: 100%;
+  margin-top: 15%;">
+
+    <!-- <img src="../../assets/images/deliveryboy_icon.png" style="display: block;
+    border-radius: 60px;
+    width: 7em;
+    height: 7em;
+    margin: -15% auto auto auto;
+    z-index: -1;
+    border: 5px solid #ff8635;
+    padding: 2%;
+    background: #fff;"> -->
+
+    <div style="    width: 75%;
+    height: 5em;
+    display: block;
+    margin: -10% auto 5% auto;
+    border: 6px solid #ff8635;
+    border-radius: 5px;">
+      <div style="width: 50%;float: left;background: #00314f;color:#fff;padding: 5.5% 2%;">
+        <p style="font-size: 1.3em;
+        margin: 0 auto;
+        padding: 0;
+        text-align: center;">₹ {{walletProperty.month_sale}}</p>
+        <p style="font-size: 0.8em;
+        margin: 1px;
+        text-align: center;">This Month Earning</p>
+      </div>
+      <div style="width: 50%;float: left;background: #00314f;color:#fff;padding: 5.5% 2%;border-left: 1px solid #ff8635;">
+        <p style="font-size: 1.3em;
+        margin: 0 auto;
+        padding: 0;
+        text-align: center;">₹ {{walletProperty.total_sale}}</p>
+        <p style="font-size: 0.8em;
+        margin: 1px;
+        text-align: center;">Total Earning</p>
+      </div>
+    </div>
+
+    <p style="    margin: 1%;
+    text-align: center;
+    color: #ff8635;
+    font-weight: bolder;
+    font-size: 1.2em;">{{walletProperty.vendor_name}}</p>
+    <p style="margin: 1%;
+    text-align: center;
+    color: #00314f;
+    font-weight: bolder;
+    font-size: 0.85em;margin-bottom: 5%;">Vendor ID : {{walletProperty.vendorid}}</p>
+
+
+ <ion-button shape="round" style="--background: #26b30f;font-weight: bold;
+margin: 5% auto;
+display: table;">WITHDRAW AMOUNT</ion-button>
+
+
+<ion-list style="padding: 4%;">
+  <ion-list-header style="    margin: 0;
+  padding: 0;
+  font-size: 1em;
+  font-weight: bolder;
+  color: #00314f;">
+    All Transaction
+  </ion-list-header>
+  <div *ngIf="orderData.length > 0">
+  <ion-item style="--background: #f4f4f4;margin-bottom: 2%;" *ngFor="let order of orderData">
+    <ion-icon slot="start" src="{{getIcon(order.type)}}" style="padding: 0;
+    margin: 0 4% 0 0;"></ion-icon>
+    <ion-label>
+      <span style="font-weight: bolder;
+          display: block;
+          font-size: 0.9em;
+          opacity: 1;">Order  #{{order.orderid}}</span>
+          <span style="display: block;
+          font-size: 0.8em;
+          opacity: 0.8;
+          font-weight: 600;">{{order.date}} | {{order.customer_name}}</span>
+    </ion-label>
+    <ion-note slot="end" style="font-size: 1.2em;
+    font-weight: bolder;
+    color: #ff8635;
+    background: #ECECEC;
+    padding: 5.5%;
+    margin-right: -5%;">₹ {{order.amount}}</ion-note>
+  </ion-item></div>
+  <ion-item style="border-left: 10px solid #ff8635;" lines="none" *ngIf="orderData.length == 0">
+    <ion-label style="font-weight: bolder;">No Transaction Found.</ion-label>
+  </ion-item>
+</ion-list>
+
+  </div>
+
+  
+
+</ion-content>
+

@@ -5,11 +5,11 @@ import { CommonServiceService } from 'src/app/service/common-service.service';
 import { InvokeServiceService } from 'src/app/service/invoke-service.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.page.html',
-  styleUrls: ['./home.page.scss'],
+  selector: 'app-my-wallet',
+  templateUrl: './my-wallet.page.html',
+  styleUrls: ['./my-wallet.page.scss'],
 })
-export class HomePage implements OnInit {
+export class MyWalletPage implements OnInit {
   @ViewChild('mySlider') slider: IonSlides;
   sliderOpts = {
     autoplay: true,
@@ -20,12 +20,12 @@ export class HomePage implements OnInit {
   };
 
   rate = 3;
-  homeData: any;
-  homeProperty = {
+  walletData: any;
+  walletProperty = {
     "vendor_name": "",
-    "total_orders": "",
-    "total_product": "",
+    "total_wallet": "",
     "total_sale": "",
+    "month_sale": "",
     "vendorid": ""
   }
   orderData = [];
@@ -35,30 +35,34 @@ export class HomePage implements OnInit {
     public commonservice: CommonServiceService,
     private route: ActivatedRoute) {
       this.route.queryParams.subscribe(() => {
-        this.getHomeData();
+        this.getwalletData();
     });
      }
 
   ngOnInit() { 
   }
 
-  wallerPage(){
-    this.router.navigate(['dashboard/my-wallet']);
-  }
-
-  getHomeData(){
-    this.invokeService.postMethod("vendor_dashboard",null).then((response: any) => {
+  getwalletData(){
+    this.invokeService.postMethod("vendor_wallet",null).then((response: any) => {
       console.log(response);
-      this.homeData = response.data;
-      this.homeProperty.total_orders = this.homeData.total_orders;
-      this.homeProperty.total_product = this.homeData.total_product;
-      this.homeProperty.total_sale = this.homeData.total_sale;
-      this.homeProperty.vendor_name = this.homeData.vendor_name;
-      this.homeProperty.vendorid = this.homeData.vendorid;
-      this.orderData = response.data.orders;
+      this.walletData = response.data;
+      this.walletProperty.month_sale = this.walletData.month_sale;
+      this.walletProperty.total_sale = this.walletData.total_sale;
+      this.walletProperty.total_wallet = this.walletData.total_wallet;
+      this.walletProperty.vendor_name = this.walletData.vendor_name;
+      this.walletProperty.vendorid = this.walletData.vendorid;
+      this.orderData = response.data.transaction;
     }).catch((err) => {
       this.commonservice.presentToastWithButton(err);
       console.log(err);
     });
+  }
+
+  getIcon(val){
+    if(val == "profit"){
+      return "../../assets/images/arrow_green.svg";
+    }else{
+      return "../../assets/images/arrow_red.svg";
+    }
   }
 }
