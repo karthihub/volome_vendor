@@ -1,0 +1,338 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar style="padding: 0;">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Add Products
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background: #ff8635;">
+  <ion-row>
+    <ion-col size="4">
+      <img class="firstImg" src="../../assets/images/deliveryboy_icon.png">
+    </ion-col>
+
+    <ion-col size="8" style="margin: auto; text-align: left;">
+      <p>Vendor Name</p>
+      <p style="font-size: 0.845em;">area name, pincode-123456</p>
+    </ion-col>
+  </ion-row>
+  <div class="inside-content">
+
+    <div style="padding: 5%;">
+
+      <ion-item style="margin-top: 5% !important">
+        <ion-input placeholder="Product ID" [(ngModel)]="req.productID" type="text" maxlength="150"></ion-input>
+        <ion-icon name="pricetags" slot="start"></ion-icon>
+      </ion-item>
+
+      <ion-item style="margin-top: 5% !important">
+        <ion-input placeholder="Product Name" [(ngModel)]="req.productName" type="text" maxlength="150"></ion-input>
+        <ion-icon name="pricetags" slot="start"></ion-icon>
+      </ion-item>
+
+      <ion-item style="margin-top: 5% !important">
+        <ion-input placeholder="Brand Name" [(ngModel)]="req.brandName" type="text" maxlength="150"></ion-input>
+        <ion-icon name="pricetags" slot="start"></ion-icon>
+      </ion-item>
+
+      <ion-item style="margin-top: 5% !important">
+        <ion-input placeholder="Manufacturer Name" [(ngModel)]="req.manufacName" type="text" maxlength="150">
+        </ion-input>
+        <ion-icon name="pricetags" slot="start"></ion-icon>
+      </ion-item>
+
+      <ion-item>
+        <ion-textarea style="height: 100px;" [(ngModel)]="req.productDescription" maxlength="500"
+          placeholder="Product Description"></ion-textarea>
+        <ion-icon name="build" slot="start" style="margin-top: -14%;"></ion-icon>
+      </ion-item>
+
+      <!-- <ion-item>
+        <ion-label>Upload Product Photos</ion-label>
+        <ion-icon name="images" slot="start"></ion-icon>
+      </ion-item> -->
+
+      <ion-item lines="none" style="--background: #e9e9e9;
+  border-radius: 15px;">
+        <ion-label position="stacked">
+          <ion-icon name="images" style="color: #ff8635;font-size: 1.5em;margin-bottom: -2%;margin-right: 2%;">
+          </ion-icon>
+          <span style="color: #000;font-size: 1.2em;">Upload photo review</span>
+        </ion-label>
+
+        <ion-row *ngIf="base64Image.length > 0">
+          <ion-col size="3"
+            style="text-align: center;margin: 7% 2%;background: rgb(255, 255, 255);border: 1px dashed #666666;"
+            *ngFor="let img of base64Image; index as i">
+            <ion-icon name="close-circle" style="    color: red;
+          position: absolute;
+          top: -8px;
+          right: -8px;
+          font-size: 1.5em;
+          display: block;" (click)="deletePhoto(i)"></ion-icon>
+            <img src="{{img}}">
+          </ion-col>
+          <ion-col size="3"
+            style="text-align: center;margin: 7% 2%;background: rgb(255, 255, 255);border: 1px dashed #666666;">
+            <img src="../../../assets/images/plus.png" style="margin-top: 20%;" (click)="openCameraPopup()">
+          </ion-col>
+        </ion-row>
+        <!-- ../../../../../../../assets/images/plus.png -->
+        <ion-row *ngIf="base64Image.length == 0">
+          <ion-col size="3"
+            style="text-align: center;margin: 7% 2%;background: rgb(255, 255, 255);border: 1px dashed #666666;">
+            <img src="../../../assets/images/plus.png" style="margin-top: 5%;" (click)="openCameraPopup()">
+          </ion-col>
+        </ion-row>
+
+      </ion-item>
+
+      <ion-item>
+        <ion-input placeholder="HSN Code" [(ngModel)]="req.HSNcode" type="text" maxlength="150"></ion-input>
+        <ion-icon name="ribbon" slot="start"></ion-icon>
+      </ion-item>
+
+      <ion-item>
+        <ion-input placeholder="SKU" [(ngModel)]="req.SKUvalue" type="text" maxlength="150"></ion-input>
+        <ion-icon name="pricetags" slot="start"></ion-icon>
+      </ion-item>
+
+      <ion-item>
+        <ion-input placeholder="Country of Origin" [(ngModel)]="req.countryOfOrigin" type="text" maxlength="150">
+        </ion-input>
+        <ion-icon name="globe" slot="start"></ion-icon>
+      </ion-item>
+
+      <ion-item>
+        <ion-input placeholder="MRP" [(ngModel)]="req.mrp" type="text" maxlength="10"></ion-input>
+        <ion-icon name="pricetag" slot="start"></ion-icon>
+      </ion-item>
+
+      <ion-item>
+        <ion-input placeholder="Seller Price" [(ngModel)]="req.sellerPrice" type="text" maxlength="10"></ion-input>
+        <ion-icon name="pricetag" slot="start"></ion-icon>
+      </ion-item>
+
+      <ion-item>
+        <ion-input placeholder="Seller Warrenty Description" [(ngModel)]="req.sellerWarDes" type="text" maxlength="250">
+        </ion-input>
+        <ion-icon name="pricetags" slot="start"></ion-icon>
+      </ion-item>
+
+      <ion-item>
+        <ion-input placeholder="Sale Price" [(ngModel)]="req.salePrice" type="text" maxlength="10"></ion-input>
+        <ion-icon name="pricetag" slot="start"></ion-icon>
+      </ion-item>
+
+      <ion-item>
+        <!-- <ion-label>Sale Start Date</ion-label> -->
+        <ion-input placeholder="Sale Start Date" [(ngModel)]="req.saleStartDate" type="date" maxlength="14"></ion-input>
+        <ion-icon name="calendar" slot="start"></ion-icon>
+      </ion-item>
+
+      <ion-item>
+        <!-- <ion-label>End Date</ion-label> -->
+        <ion-input placeholder="End Date" [(ngModel)]="req.endDate" type="date" maxlength="14"></ion-input>
+        <ion-icon name="calendar" slot="start"></ion-icon>
+      </ion-item>
+
+      <!-- <ion-item>
+        <ion-input placeholder="Condition Note" [(ngModel)]="req.conditionNote" type="text" maxlength="10"></ion-input>
+        <ion-icon name="clipboard" slot="start"></ion-icon>
+      </ion-item> -->
+
+      <div style="background: #e9e9e9; margin-top: 5px; border-radius:10px">
+        <ion-item lines="none">
+          <ion-label>Product Dimension</ion-label>
+          <ion-icon name="cash" slot="start"></ion-icon>
+        </ion-item>
+
+        <ion-row>
+          <ion-col size="6">
+            <ion-item>
+              <ion-input placeholder="Length" [(ngModel)]="req.ProductDimensionLength" type="tel" maxlength="10">
+              </ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size="6" style="margin: auto;">
+            <ion-select [(ngModel)]="req.ProductDimensionLengthUnit" placeholder="Unit">
+              <ion-select-option value="angstrom">angstrom</ion-select-option>
+              <ion-select-option value="mils">mils</ion-select-option>
+              <ion-select-option value="yards">yards</ion-select-option>
+              <ion-select-option value="picometer">picometer</ion-select-option>
+              <ion-select-option value="miles">miles</ion-select-option>
+              <ion-select-option value="decimeters">decimeters</ion-select-option>
+              <ion-select-option value="MM">MM</ion-select-option>
+              <ion-select-option value="M">M</ion-select-option>
+              <ion-select-option value="IN">IN</ion-select-option>
+              <ion-select-option value="FT">FT</ion-select-option>
+            </ion-select>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="6">
+            <ion-item>
+              <ion-input placeholder="Width" [(ngModel)]="req.ProductDimensionWidth" type="tel" maxlength="10">
+              </ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size="6" style="margin: auto;">
+            <ion-select [(ngModel)]="req.ProductDimensionWidthUnit" placeholder="Unit">
+              <ion-select-option value="angstrom">angstrom</ion-select-option>
+              <ion-select-option value="mils">mils</ion-select-option>
+              <ion-select-option value="yards">yards</ion-select-option>
+              <ion-select-option value="picometer">picometer</ion-select-option>
+              <ion-select-option value="miles">miles</ion-select-option>
+              <ion-select-option value="decimeters">decimeters</ion-select-option>
+              <ion-select-option value="MM">MM</ion-select-option>
+              <ion-select-option value="M">M</ion-select-option>
+              <ion-select-option value="IN">IN</ion-select-option>
+              <ion-select-option value="FT">FT</ion-select-option>
+            </ion-select>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="6">
+            <ion-item>
+              <ion-input placeholder="Height" [(ngModel)]="req.ProductDimensionHeight" type="tel" maxlength="10">
+              </ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size="6" style="margin: auto;">
+            <ion-select [(ngModel)]="req.ProductDimensionHeightUnit" placeholder="Unit">
+              <ion-select-option value="angstrom">angstrom</ion-select-option>
+              <ion-select-option value="mils">mils</ion-select-option>
+              <ion-select-option value="yards">yards</ion-select-option>
+              <ion-select-option value="picometer">picometer</ion-select-option>
+              <ion-select-option value="miles">miles</ion-select-option>
+              <ion-select-option value="decimeters">decimeters</ion-select-option>
+              <ion-select-option value="MM">MM</ion-select-option>
+              <ion-select-option value="M">M</ion-select-option>
+              <ion-select-option value="IN">IN</ion-select-option>
+              <ion-select-option value="FT">FT</ion-select-option>
+            </ion-select>
+          </ion-col>
+        </ion-row>
+      </div>
+
+      <div style="background: #e9e9e9; margin-top: 5px; border-radius:10px">
+        <ion-item lines="none">
+          <ion-label>Package Dimension</ion-label>
+          <ion-icon name="cash" slot="start"></ion-icon>
+        </ion-item>
+
+        <ion-row>
+          <ion-col size="6">
+            <ion-item>
+              <ion-input placeholder="Length" [(ngModel)]="req.PackageDimensionLength" type="tel" maxlength="10">
+              </ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size="6" style="margin: auto;">
+            <ion-select [(ngModel)]="req.PackageDimensionLengthUnit" placeholder="Unit">
+              <ion-select-option value="angstrom">angstrom</ion-select-option>
+              <ion-select-option value="mils">mils</ion-select-option>
+              <ion-select-option value="yards">yards</ion-select-option>
+              <ion-select-option value="picometer">picometer</ion-select-option>
+              <ion-select-option value="miles">miles</ion-select-option>
+              <ion-select-option value="decimeters">decimeters</ion-select-option>
+              <ion-select-option value="MM">MM</ion-select-option>
+              <ion-select-option value="M">M</ion-select-option>
+              <ion-select-option value="IN">IN</ion-select-option>
+              <ion-select-option value="FT">FT</ion-select-option>
+            </ion-select>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="6">
+            <ion-item>
+              <ion-input placeholder="Width" [(ngModel)]="req.PackageDimensionWidth" type="tel" maxlength="10">
+              </ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size="6" style="margin: auto;">
+            <ion-select [(ngModel)]="req.PackageDimensionWidthUnit" placeholder="Unit">
+              <ion-select-option value="angstrom">angstrom</ion-select-option>
+              <ion-select-option value="mils">mils</ion-select-option>
+              <ion-select-option value="yards">yards</ion-select-option>
+              <ion-select-option value="picometer">picometer</ion-select-option>
+              <ion-select-option value="miles">miles</ion-select-option>
+              <ion-select-option value="decimeters">decimeters</ion-select-option>
+              <ion-select-option value="MM">MM</ion-select-option>
+              <ion-select-option value="M">M</ion-select-option>
+              <ion-select-option value="IN">IN</ion-select-option>
+              <ion-select-option value="FT">FT</ion-select-option>
+            </ion-select>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="6">
+            <ion-item>
+              <ion-input placeholder="Height" [(ngModel)]="req.PackageDimensionHeight" type="tel" maxlength="10">
+              </ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size="6" style="margin: auto;">
+            <ion-select [(ngModel)]="req.packageDimensionHeightUnit" placeholder="Unit">
+              <ion-select-option value="angstrom">angstrom</ion-select-option>
+              <ion-select-option value="mils">mils</ion-select-option>
+              <ion-select-option value="yards">yards</ion-select-option>
+              <ion-select-option value="picometer">picometer</ion-select-option>
+              <ion-select-option value="miles">miles</ion-select-option>
+              <ion-select-option value="decimeters">decimeters</ion-select-option>
+              <ion-select-option value="MM">MM</ion-select-option>
+              <ion-select-option value="M">M</ion-select-option>
+              <ion-select-option value="IN">IN</ion-select-option>
+              <ion-select-option value="FT">FT</ion-select-option>
+            </ion-select>
+          </ion-col>
+        </ion-row>
+      </div>
+
+      <div style="background: #e9e9e9; margin-top: 5px; border-radius:10px">
+        <ion-item lines="none">
+          <ion-label>Package Weight</ion-label>
+          <ion-icon name="cash" slot="start"></ion-icon>
+        </ion-item>
+
+        <ion-row>
+          <ion-col size="6">
+            <ion-item>
+              <ion-input placeholder="Weight" [(ngModel)]="req.productWeight" type="tel" maxlength="10">
+              </ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size="6" style="margin: auto;">
+            <ion-select [(ngModel)]="req.productWeightUnit" placeholder="Unit">
+              <ion-select-option value="LB">LB</ion-select-option>
+              <ion-select-option value="KG">KG</ion-select-option>
+              <ion-select-option value="GR">GR</ion-select-option>
+              <ion-select-option value="hundredths_pounds">hundredths_pounds</ion-select-option>
+              <ion-select-option value="MG">MG</ion-select-option>
+              <ion-select-option value="tons">tons</ion-select-option>
+              <ion-select-option value="OZ">OZ</ion-select-option>
+            </ion-select>
+          </ion-col>
+        </ion-row>
+      </div>
+      <!-- <ion-item>
+        <ion-select [(ngModel)]="req.condition" placeholder="Condition">
+          <ion-select-option value="Good">Good</ion-select-option>
+          <ion-select-option value="Bad">Bad</ion-select-option>
+        </ion-select>
+        <ion-icon name="checkmark-circle" slot="start"></ion-icon>
+      </ion-item> -->
+
+      <ion-button (click)="addProducts()">ADD PRODUCTS</ion-button>
+    </div>
+  </div>
+
+</ion-content>

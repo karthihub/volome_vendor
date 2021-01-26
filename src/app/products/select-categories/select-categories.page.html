@@ -1,0 +1,28 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar style="padding: 0;">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Select Categories
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background: #ff8635;">
+  <div class="inside-content">
+    <div style="padding: 5%;">
+      <ion-select *ngFor="let data of categoriesData" placeholder="Unit">
+        <ion-select-option ionChange="catagoriesCheck(data)" value="data.category_name">{{data.category_name}}
+        </ion-select-option>
+      </ion-select>
+
+      <div *ngIf="subCategoriesData">
+        <ion-select *ngFor="let data of subCategoriesData" placeholder="Unit">
+          <ion-select-option ionChange="catagoriesCheck(data)" value="data.category_name">{{data.category_name}}
+          </ion-select-option>
+        </ion-select>
+      </div>
+    </div>
+  </div>
+</ion-content>
