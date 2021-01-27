@@ -119,7 +119,9 @@ export class SelectCategoriesPage implements OnInit {
     this.invokeService.postMethod("category_attributes/"+ category_id , null).then((response: any) => {
       console.log(response);
       this.backFlag = false;
-      // localStorage.setItem('MyItemsPersisted', '');
+      var tempJson = JSON.parse(localStorage.getItem('MyItemsPersisted'));
+      tempJson.items = [];
+      localStorage.setItem('MyItemsPersisted', tempJson.items);
       if(response.data){
         this.commonservice.select_categoryData = response.data;
         this.router.navigate(['/add-products']);
