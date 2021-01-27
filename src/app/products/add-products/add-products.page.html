@@ -323,6 +323,30 @@
           </ion-col>
         </ion-row>
       </div>
+
+      <div *ngIf="category_data" style="background: #e9e9e9; margin-top: 5px; border-radius:10px">
+        <ion-item lines="none">
+          <ion-label>Category Attribute</ion-label>
+          <ion-icon name="cash" slot="start"></ion-icon>
+        </ion-item>
+
+        <ion-row *ngFor="let data of category_data">
+          <ion-col size="6">
+            <ion-item lines="none">
+              <ion-label style="white-space: pre-wrap;">{{data.name}}</ion-label>
+            </ion-item>
+          </ion-col>
+          <ion-col size="6" style="margin: auto;">
+            <ion-item lines="none">
+              <ion-select [(ngModel)]="req.category_attr" placeholder="Select {{data.name}}">
+                <ion-select-option *ngFor="let item of data.values" [value]="item">{{item}}
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </div>
+      
       <!-- <ion-item>
         <ion-select [(ngModel)]="req.condition" placeholder="Condition">
           <ion-select-option value="Good">Good</ion-select-option>

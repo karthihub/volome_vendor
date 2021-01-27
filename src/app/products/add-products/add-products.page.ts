@@ -12,6 +12,7 @@ import { InvokeServiceService } from '../../service/invoke-service.service';
 })
 export class AddProductsPage implements OnInit {
   public base64Image = [];
+  category_data: any;
   req: any = {
     "productID": "",
     "productName": "",
@@ -41,6 +42,7 @@ export class AddProductsPage implements OnInit {
     "packageDimensionHeightUnit": "",
     "productWeight": "",
     "productWeightUnit": "",
+    "category_attr": ""
     // "conditionNote": "",
     // "quantity": "",
     // "condition": ""
@@ -56,13 +58,14 @@ export class AddProductsPage implements OnInit {
   ) { }
 
   ngOnInit() {
-
+    this.category_data = this.commonservice.select_categoryData;
+    console.log("category_data", this.category_data);
   }
 
   addProducts() {
 
     console.log("base64Img---->", this.base64Image);
-
+    console.log("req.category_data", this.req.category_attr);
     if (!this.req.productID) {
       this.commonservice.presentToastWithButton("Please Enter Product ID");
       return false;
