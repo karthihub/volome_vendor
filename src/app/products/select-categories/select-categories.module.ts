@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TreeViewModule } from 'ionic-tree-view';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -13,7 +14,8 @@ import { SelectCategoriesPage } from './select-categories.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    SelectCategoriesPageRoutingModule
+    SelectCategoriesPageRoutingModule,
+    TreeViewModule.forRoot()
   ],
   declarations: [SelectCategoriesPage]
 })

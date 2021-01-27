@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-
+import { TreeViewModule } from "ionic-tree-view";
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -26,6 +26,7 @@ import { Camera } from '@ionic-native/camera/ngx';
       AppRoutingModule,
       HttpClientModule,
       IonicRatingModule,
+      TreeViewModule.forRoot(),
       IonicStorageModule.forRoot()],
   providers: [
     StatusBar,

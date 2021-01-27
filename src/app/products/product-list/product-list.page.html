@@ -20,20 +20,32 @@
       <p style="font-size: 0.845em;">area name, pincode-123456</p>
     </ion-col>
   </ion-row>
-  <div class="inside-content" style="min-height: -webkit-fill-available;
-  max-height: 100%;">
+  <div class="inside-content" style="min-height: -webkit-fill-available;">
 
     <div style="padding: 5%;" *ngIf="productList.length > 0">
       <ion-grid>
         <ion-row>
           <ion-col size="5.5" style="text-align: center; background: #66666614;margin: 2%;" *ngFor="let item of productList">
             <img src="{{item.featured_image}}" style="width: 90%;margin-bottom: 5%;">
-            <p style="margin: 1%; font-weight: 600;color: #666666;margin-bottom: 5%;">{{item.name}}</p>
+            <p style="margin: 1%; font-weight: 600;color: #666666;margin-bottom: 5%;display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            overflow: hidden;">{{item.name}}</p>
             <p style="margin-top: 4%;">
-              <span style="margin-right: 5%;font-weight: 600;color:rgb(253, 5, 5);text-decoration: line-through;">₹ {{item.sales_price}}</span>
-              <span style="margin-right: 5%;font-weight: 600;">₹ {{item.sales_price}}</span>
-              <span style="font-weight: 600;color: rgb(26, 192, 26);font-size: 0.8em;">{{item.mrp}}%</span>
+              <span style="margin-right: 5%;font-weight: 600;color:rgb(253, 5, 5);text-decoration: line-through;">₹ {{item.mrp}}</span>
+              <span style="margin-right: 5%;font-weight: 600;color: #000;">₹ {{item.seller_price}}</span>
+              <span style="font-weight: 600;color: rgb(26, 192, 26);font-size: 0.8em;">{{item.stock_value}}%</span>
             </p>
+            <ion-row style="margin: 0;padding: 0;font-size: 0.9em;background: #ebebeb;">
+              <ion-col size="6" style="margin: 0;padding: 0;margin-top: 5%;margin-bottom: 5%;border-right: 0.1px solid #8080808c;">
+                <ion-icon name="create-outline" style="margin-bottom: -2%;margin-right: 2%;"></ion-icon>
+                <span>Edit</span>
+              </ion-col>
+              <ion-col size="6" style="margin: 0;padding: 0;margin-top: 5%;margin-bottom: 5%;">
+                <ion-icon name="trash-outline" style="margin-bottom: -2%;margin-right: 2%;"></ion-icon>
+                <span>Delete</span>
+              </ion-col>
+            </ion-row>
           </ion-col>
         </ion-row>
       </ion-grid>

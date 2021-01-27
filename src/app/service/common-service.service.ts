@@ -30,7 +30,8 @@ export class CommonServiceService {
   public userAddress = "";
   public cartAmount:any = "";
   public user_id:any = "";
-
+  public select_categoryData:any;
+  
   constructor(private toastCtrl: ToastController,
     private loadingCtrl: LoadingController,
     private geolocation: Geolocation,
