@@ -116,6 +116,7 @@ export class SelectCategoriesPage implements OnInit {
   }
 
   getCategoryAttribute(category_id){
+    this.commonservice.select_categoryID = category_id;
     this.invokeService.postMethod("category_attributes/"+ category_id , null).then((response: any) => {
       console.log(response);
       this.backFlag = false;

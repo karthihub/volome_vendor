@@ -31,6 +31,7 @@ export class CommonServiceService {
   public cartAmount:any = "";
   public user_id:any = "";
   public select_categoryData:any;
+  public select_categoryID:any;
   
   constructor(private toastCtrl: ToastController,
     private loadingCtrl: LoadingController,

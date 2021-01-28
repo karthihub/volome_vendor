@@ -41,10 +41,13 @@ export class AddProductsPage implements OnInit {
     "packageDimensionHeightUnit": "",
     "productWeight": "",
     "productWeightUnit": "",
+    "available_stock": ""
     // "conditionNote": "",
     // "quantity": "",
     // "condition": ""
   }
+  public category_data = [];
+  public qtd:any = {};
   constructor(
     public actionSheetController: ActionSheetController,
     public camera: Camera,
@@ -56,7 +59,8 @@ export class AddProductsPage implements OnInit {
   ) { }
 
   ngOnInit() {
-
+    this.category_data = this.commonservice.select_categoryData;
+    console.log("category_data", this.category_data);
   }
 
   addProducts() {
@@ -154,16 +158,30 @@ export class AddProductsPage implements OnInit {
       // } else if (!this.req.condition) {
       //   this.commonservice.presentToastWithButton("Please Enter Condition");
       //   return false;
+    }else if (!this.req.available_stock) {
+      this.commonservice.presentToastWithButton("Please Enter Available Stock");
+      return false;
     } else {
+      console.log("this.qtd---->", this.qtd);
+      var tempAttributes = [];
+      for(let i=0; i<this.category_data.length; i++){
+        tempAttributes.push({
+          "attribute_id": this.category_data[i].attribute_id,
+          "value":this.qtd[i]
+        });
+      }
+
+
       var requestData = {
         "productid": this.req.productID,
-        "category_id": "",
+        "category_id": this.commonservice.select_categoryID,
         "name": this.req.productName,
         "brand_name": this.req.brandName,
         "manufacturer": this.req.manufacName,
         "description": this.req.productDescription,
         // "HSNcode": this.req.HSNcode, //
 
+        "available_stock": this.req.available_stock,
         "sku": this.req.SKUvalue,
         "country_of_origin": this.req.countryOfOrigin,
         "seller_price": this.req.sellerPrice,
@@ -183,12 +201,13 @@ export class AddProductsPage implements OnInit {
           "Width": { "size": this.req.PackageDimensionWidth, "unit": this.req.PackageDimensionWidthUnit },
           "Height": { "size": this.req.PackageDimensionHeight, "unit": this.req.packageDimensionHeightUnit }
         },
-        "shipping_weight": this.req.productWeight,
+        "shipping_weight": this.req.productWeight +" "+ this.req.productWeightUnit,
         "featured_image": this.base64Image.length == 1 ? this.base64Image : this.base64Image[0],
-        "images": [this.base64Image.length > 0 ? this.base64Image : this.base64Image[0]],
+        "images": (this.base64Image.length > 0 ? this.base64Image : this.base64Image[0]),
         // "conditionNote": this.req.conditionNote, //
         // "quantity": this.req.quantity, //
         // "condition": this.req.condition //
+        "product_attributes": tempAttributes
       }
       console.log("request Date--?", requestData);
 
