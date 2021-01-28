@@ -41,7 +41,8 @@ export class AddProductsPage implements OnInit {
     "packageDimensionHeightUnit": "",
     "productWeight": "",
     "productWeightUnit": "",
-    "available_stock": ""
+    "available_stock": "",
+    "category_attr": ""
     // "conditionNote": "",
     // "quantity": "",
     // "condition": ""
@@ -66,7 +67,7 @@ export class AddProductsPage implements OnInit {
   addProducts() {
 
     console.log("base64Img---->", this.base64Image);
-
+    console.log("req.category_data", this.req.category_attr);
     if (!this.req.productID) {
       this.commonservice.presentToastWithButton("Please Enter Product ID");
       return false;
