@@ -33,6 +33,7 @@ export class CommonServiceService {
   public select_categoryData:any;
   public select_categoryID:any;
   public profileDetails:any;
+  public getProductInfo:any;
 
   shop_latlang:any = {
     lat : "",

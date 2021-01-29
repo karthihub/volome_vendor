@@ -17,6 +17,8 @@ import { IonicRatingModule } from 'ionic4-rating';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { Camera } from '@ionic-native/camera/ngx';
+import { Crop } from '@ionic-native/crop/ngx';
+import { File } from '@ionic-native/file/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,6 +39,7 @@ import { Camera } from '@ionic-native/camera/ngx';
     NativeGeocoder,
     NgxImageCompressService,
     Camera,
+    Crop,File,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

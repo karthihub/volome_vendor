@@ -168,12 +168,21 @@ export class AddProductsPage implements OnInit {
     } else {
       console.log("this.qtd---->", this.qtd);
       var tempAttributes = [];
+      var featured_image = "";
       for(let i=0; i<this.category_data.length; i++){
         tempAttributes.push({
           "attribute_id": this.category_data[i].attribute_id,
           "value":this.qtd[i]
         });
       }
+
+      var tempprofileData = this.base64Image;
+      for(let i=0; i<tempprofileData.length; i++){
+        var data = tempprofileData[i].split(",");
+        tempprofileData[i] =  data[1];
+      }
+
+      featured_image = tempprofileData[0];
 
 
       var requestData = {
@@ -206,8 +215,8 @@ export class AddProductsPage implements OnInit {
           "Height": { "size": this.req.PackageDimensionHeight, "unit": this.req.packageDimensionHeightUnit }
         },
         "shipping_weight": this.req.productWeight +" "+ this.req.productWeightUnit,
-        "featured_image": this.base64Image.length == 1 ? this.base64Image : this.base64Image[0],
-        "images": (this.base64Image.length > 0 ? this.base64Image : this.base64Image[0]),
+        "featured_image": featured_image,
+        "images": (tempprofileData.length > 0 ? tempprofileData : tempprofileData[0]),
         // "conditionNote": this.req.conditionNote, //
         // "quantity": this.req.quantity, //
         // "condition": this.req.condition //
@@ -292,7 +301,8 @@ export class AddProductsPage implements OnInit {
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
-
+      targetWidth: 344,
+      targetHeight: 257
     }
     this.camera.getPicture(options).then((imageData) => {
       console.log(imageData);

@@ -21,6 +21,14 @@ const routes: Routes = [
   {
     path: 'my-wallet',
     loadChildren: () => import('./my-wallet/my-wallet.module').then( m => m.MyWalletPageModule)
+  },
+  {
+    path: 'notification',
+    loadChildren: () => import('./notification/notification.module').then( m => m.NotificationPageModule)
+  },
+  {
+    path: 'achievement',
+    loadChildren: () => import('./achievement/achievement.module').then( m => m.AchievementPageModule)
   }
   
 ];

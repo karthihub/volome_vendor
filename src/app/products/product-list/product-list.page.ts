@@ -23,7 +23,30 @@ export class ProductListPage implements OnInit {
   getProductData(){
     this.invokeService.postMethod("myproducts?page_id=1&limit=20",null).then((response: any) => {
       console.log(response);
+      this.productList = [];
       this.productList = response.data;
+    }).catch((err) => {
+      this.commonservice.presentToastWithButton(err);
+      console.log(err);
+    });
+  }
+
+  deleteProduct(product_id){
+    this.invokeService.postMethod("vendor_deleteProduct/"+product_id,null).then((response: any) => {
+      console.log(response);
+      this.commonservice.presentToastWithButton(response.message);
+      this.getProductData();
+    }).catch((err) => {
+      this.commonservice.presentToastWithButton(err);
+      console.log(err);
+    });
+  }
+
+  editProduct(product_id){
+    this.invokeService.postMethod("getProductInfo/"+product_id,null).then((response: any) => {
+      console.log(response);
+      this.commonservice.getProductInfo = response.data;
+      this.router.navigate(['/add-products']);
     }).catch((err) => {
       this.commonservice.presentToastWithButton(err);
       console.log(err);

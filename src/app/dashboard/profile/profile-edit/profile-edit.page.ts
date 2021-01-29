@@ -95,7 +95,7 @@ export class ProfileEditPage implements OnInit {
       return false;
     }else{
 
-      var tempprofileData = this.req.shop_logo;
+    var tempprofileData = this.req.shop_logo;
     var findValue = tempprofileData.indexOf("demo.moziztech.com");
         if(findValue == "-1"){
           var data = tempprofileData.split(",");

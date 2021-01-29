@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { IonSlides } from '@ionic/angular';
 import { CommonServiceService } from 'src/app/service/common-service.service';
 import { InvokeServiceService } from 'src/app/service/invoke-service.service';
+import { AppComponent } from '../../app.component';
 
 @Component({
   selector: 'app-home',
@@ -32,7 +33,7 @@ export class HomePage implements OnInit {
 
 
   constructor(public router: Router,public invokeService: InvokeServiceService,
-    public commonservice: CommonServiceService,
+    public commonservice: CommonServiceService,private appComponent: AppComponent,
     private route: ActivatedRoute) {
       this.route.queryParams.subscribe(() => {
         this.getHomeData();
@@ -40,6 +41,7 @@ export class HomePage implements OnInit {
      }
 
   ngOnInit() { 
+    this.appComponent.updateData();
   }
 
   wallerPage(){

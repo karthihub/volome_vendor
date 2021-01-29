@@ -12,7 +12,7 @@
         </ion-avatar>
         <p style="text-align: center;
           font-size: 1em;
-          font-weight: bolder;">Mobile : 8220285323</p>
+          font-weight: bolder;">Mobile : {{mobileNumber}}</p>
         <ion-menu-toggle auto-hide="false">
           <ion-list style="padding: 0;">
             <ion-item style="border-left: 10px solid #ff8635;" lines="none" routerDirection="forward" detail="false"
@@ -26,6 +26,18 @@
             <ion-item style="border-left: 10px solid #ff8635;" lines="none" routerDirection="forward" detail="false"
               routerLink="product-list">
               <ion-label style="font-weight: bolder;">Product List</ion-label>
+            </ion-item>
+            <ion-item style="border-left: 10px solid #ff8635;" lines="none" routerDirection="forward" detail="false"
+              routerLink="dashboard/achievement">
+              <ion-label style="font-weight: bolder;">Achievements</ion-label>
+            </ion-item>
+            <ion-item style="border-left: 10px solid #ff8635;" lines="none" routerDirection="forward" detail="false"
+              routerLink="dashboard/notification">
+              <ion-label style="font-weight: bolder;">Notifications</ion-label>
+            </ion-item>
+            <ion-item style="border-left: 10px solid #ff8635;" lines="none" routerDirection="root" detail="false"
+              routerLink="">
+              <ion-label style="font-weight: bolder;">Logout</ion-label>
             </ion-item>
           </ion-list>
         </ion-menu-toggle>

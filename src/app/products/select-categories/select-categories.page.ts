@@ -20,6 +20,11 @@ export class SelectCategoriesPage implements OnInit {
 
   categoriesData = [];
   subCategoriesData: any;
+  public catArray = [];
+  public subCatArray = [];
+  public subCatArrayModel = [];
+  public selectedCateg:any;
+  public selectedCat_ID:any;
   constructor(
     public commonservice: CommonServiceService,
     public invokeService: InvokeServiceService,
@@ -43,13 +48,27 @@ export class SelectCategoriesPage implements OnInit {
 
   }
 
+  ionViewDidEnter() {
+    const ionSelects = document.querySelectorAll('ion-select');
+    ionSelects.forEach((sel) => {
+      sel.shadowRoot.querySelectorAll('.select-icon-inner')
+        .forEach((elem) => {
+          elem.setAttribute('style', 'display: none;');
+        });
+      sel.shadowRoot.querySelectorAll('.select-text')
+        .forEach((elem) => {
+          elem.setAttribute('style', 'opacity: 1;');
+        });
+    });
+  }
+
   getCategoriesData(){
     this.items = [];
     // localStorage.setItem('MyItemsPersisted', '');
     this.invokeService.postMethod("getcategories", null).then((response: any) => {
       console.log(response);
       this.categoriesData = response.data;
-      this.categoryJson(this.categoriesData);
+      this.categoryJson_dropdown(this.categoriesData);
     }).catch((err) => {
       this.commonservice.presentToastWithButton(err);
       console.log(err);
@@ -119,20 +138,102 @@ export class SelectCategoriesPage implements OnInit {
     this.commonservice.select_categoryID = category_id;
     this.invokeService.postMethod("category_attributes/"+ category_id , null).then((response: any) => {
       console.log(response);
-      this.backFlag = false;
-      var tempJson = JSON.parse(localStorage.getItem('MyItemsPersisted'));
-      tempJson.items = [];
-      localStorage.setItem('MyItemsPersisted', tempJson.items);
-      if(response.data){
+      // this.backFlag = false;
+      // var tempJson = JSON.parse(localStorage.getItem('MyItemsPersisted'));
+      // tempJson.items = [];
+      // localStorage.setItem('MyItemsPersisted', tempJson.items);
+      // if(response.data){
         this.commonservice.select_categoryData = response.data;
         this.router.navigate(['/add-products']);
-      }else{
-        this.categoryJson(this.categoriesData);
-      }
+      // }else{
+      //   this.categoryJson(this.categoriesData);
+      // }
     }).catch((err) => {
       this.commonservice.presentToastWithButton(err);
       console.log(err);
     });
+  }
+
+  categoryJson_dropdown(tempData){
+    this.catArray = [];
+    for(var i = 0; i < tempData.length; i++)
+      {
+        this.catArray.push({ 
+          "id": tempData[i].category_id,
+         "name": tempData[i].category_name
+         });
+      }
+  }
+
+  subCategoryJson_dropdown(category_id){
+    this.selectedCat_ID = category_id;
+    console.log(category_id);
+    this.subCatArray = [];
+    for(var i = 0; i < this.categoriesData.length; i++)
+      {
+        if(this.categoriesData[i].category_id == category_id){
+          if(this.categoriesData[i].hasOwnProperty('subcategories')){
+            console.log("subcategories===>>", this.categoriesData[i].subcategories);
+            this.getSubcategoriesData(this.categoriesData[i].subcategories);
+          }
+        }
+      }
+      setTimeout(() => {
+        const ionSelects = document.querySelectorAll('ion-select');
+        ionSelects.forEach((sel) => {
+          sel.shadowRoot.querySelectorAll('.select-icon-inner')
+            .forEach((elem) => {
+              elem.setAttribute('style', 'display: none;');
+            });
+          sel.shadowRoot.querySelectorAll('.select-text')
+            .forEach((elem) => {
+              elem.setAttribute('style', 'opacity: 1;');
+            });
+        });
+      }, 500);
+  }
+
+  getSubcategoriesData(subcategoriesData){
+    for(var j = 0; j < subcategoriesData.length; j++){
+      this.subCatArray.push({
+        placeholder : "Select Sub-Category",
+        selectedVal : "",
+        options : [{
+          "value" : subcategoriesData[j].category_name,
+          "category_id" : subcategoriesData[j].category_id
+        }],
+        subcategories : (subcategoriesData[j].hasOwnProperty('subcategories'))? subcategoriesData[j].subcategories:null
+      });
+    }
+  }
+
+  getSubcategoriesData_1(category_id, categoriesData){
+    this.selectedCat_ID = category_id;
+    console.log("getSubcategoriesData_1--->",category_id,categoriesData);
+    // for(var i = 0; i < categoriesData.length; i++)
+    //   {
+        // if(categoriesData.category_id == category_id){
+          if(categoriesData.subcategories){
+            console.log("subcategories===>>", categoriesData.subcategories);
+            this.getSubcategoriesData(categoriesData.subcategories);
+          }else{
+            this.getCategoryAttribute(category_id);
+          }
+        // }
+      // }
+      setTimeout(() => {
+        const ionSelects = document.querySelectorAll('ion-select');
+        ionSelects.forEach((sel) => {
+          sel.shadowRoot.querySelectorAll('.select-icon-inner')
+            .forEach((elem) => {
+              elem.setAttribute('style', 'display: none;');
+            });
+          sel.shadowRoot.querySelectorAll('.select-text')
+            .forEach((elem) => {
+              elem.setAttribute('style', 'opacity: 1;');
+            });
+        });
+      }, 500);
   }
 
 }
