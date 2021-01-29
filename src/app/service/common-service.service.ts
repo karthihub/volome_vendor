@@ -32,6 +32,12 @@ export class CommonServiceService {
   public user_id:any = "";
   public select_categoryData:any;
   public select_categoryID:any;
+  public profileDetails:any;
+
+  shop_latlang:any = {
+    lat : "",
+    lang : ""
+  }
   
   constructor(private toastCtrl: ToastController,
     private loadingCtrl: LoadingController,

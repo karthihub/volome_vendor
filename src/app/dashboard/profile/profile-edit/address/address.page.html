@@ -1,0 +1,36 @@
+<ion-header class="ion-no-border" >
+  <ion-toolbar style="padding: 0;">
+    <ion-title>
+      Shope Location
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss(false)">
+        <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <div class="search-inp">
+    <input id="pac-input" type="text" no-line placeholder="Enter your location" />
+  </div> -->
+  <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="locate-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab> -->
+  <div #map id="map"></div>
+</ion-content>
+
+<ion-footer class="ion-no-border myColor">
+  <ion-toolbar transparent>
+    <ion-button (click)="dismiss(true)" style="width: auto;margin-bottom: unset;    --background: #fff;
+    --color: #00314f;
+    font-weight: bold;
+    font-family: 'gilroy-bold' !important;">
+      <ion-icon slot="start" name="location-outline"></ion-icon>
+      Use Current Location
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

@@ -4,6 +4,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { CommonServiceService } from '../../service/common-service.service';
 import { InvokeServiceService } from '../../service/invoke-service.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-products',
@@ -57,6 +58,8 @@ export class AddProductsPage implements OnInit {
     public commonservice: CommonServiceService,
     public invokeService: InvokeServiceService,
     private navCtrl: NavController,
+    public router: Router,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -215,7 +218,8 @@ export class AddProductsPage implements OnInit {
       this.invokeService.postMethod("vendor_addnewproduct", requestData).then((response: any) => {
         console.log(response);
         this.commonservice.presentToastWithButton(response.message);
-        this.navCtrl.pop();
+        // this.navCtrl.pop();
+        this.router.navigate(['/dashboard']);
       }).catch((err) => {
         this.commonservice.presentToastWithButton(err);
         console.log(err);
