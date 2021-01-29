@@ -1,0 +1,30 @@
+ion-icon {
+    color:#ff8635;
+}
+
+.inside-content {
+    background: #fff;
+    border-radius: 25px 25px 0 0;
+    z-index: 46;
+    position: absolute;
+    width: 100%;
+}
+
+.vendorTag {
+    margin: 1%;
+    color: #fff;
+    font-weight: bolder;
+    font-size: 1m;
+}
+
+.firstImg {
+    display: block;
+    border-radius: 60px;
+    width: 6em;
+    height: 6em;
+    margin: 15px 20px;
+    z-index: -1;
+    border: 5px solid #ff8635;
+    padding: 2%;
+    background: #fff;
+}

@@ -33,7 +33,15 @@ const routes: Routes = [
   {
     path: 'select-categories',
     loadChildren: () => import('./products/select-categories/select-categories.module').then( m => m.SelectCategoriesPageModule)
+  },  {
+    path: 'my-orders',
+    loadChildren: () => import('./orders/my-orders/my-orders.module').then( m => m.MyOrdersPageModule)
+  },
+  {
+    path: 'order-details',
+    loadChildren: () => import('./orders/order-details/order-details.module').then( m => m.OrderDetailsPageModule)
   }
+
 ];
 @NgModule({
   imports: [

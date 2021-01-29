@@ -1,0 +1,41 @@
+.vendorTag {
+    margin: 1%;
+    color: #fff;
+    font-weight: bolder;
+    font-size: 1m;
+}
+
+.inside-content {
+    background: #fff;
+    border-radius: 25px;
+    z-index: 46;
+    position: absolute;
+    width: 100%;
+}
+
+.second-div {
+    background: #ff8635;
+    // z-index: 46;
+    position: absolute;
+    width: 100%;
+}
+
+.productImg {
+    display: block;
+    /* border-radius: 60px; */
+    width: 4em;
+    height: 4em;
+    // margin: 15px 20px;
+    z-index: -1;
+    border: 1px solid #e9e9e9;
+    padding: 2%;
+    background: #fff;
+}
+
+.roundIcon {
+    border-radius: 100%;
+    background: rgb(26, 192, 26);
+    border: 3px solid #fff;
+    height: 15px;
+    width: 15px;
+}

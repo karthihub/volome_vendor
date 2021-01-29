@@ -1,0 +1,170 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar style="padding: 0;">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Order Details
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background: #ff8635;">
+  <ion-row style="margin-left: 15px; height: 100px; flex-wrap: unset;">
+    <ion-col size="8" style="margin: auto; text-align: left;">
+      <p class="vendorTag">Order #: 12XYZ345</p>
+      <p style="font-size: 0.845em; margin: 1px 1%;">Ordered on: 29.01.2021 | 10:10 AM</p>
+    </ion-col>
+    <!-- <ion-col size="1"> -->
+      <div style="border-right: 1px solid #e9e9e9; height: 50px; margin-top: 20px;"></div>
+    <!-- </ion-col> -->
+    <ion-col size="4" style="margin:auto; text-align:center;">
+      <p style="font-weight: bold;">&#8377; 1,395.00</p>
+    </ion-col>
+  </ion-row>
+
+  <div class="inside-content">
+    <ion-row style="background: #f0fafc; margin: 20px;">
+      <ion-col size="3" style="margin: auto;">
+        <img class="productImg" src="../../assets/images/deliveryboy_icon.png">
+      </ion-col>
+      <ion-col size="6">
+        <p style="font-size: 0.845em">Sugar Milk</p>
+        <p style="font-size: 0.845em">SKG bag</p>
+        <p>
+          <span style="margin-right: 5%;font-weight: 600;font-size: 0.8em;color:rgb(253, 5, 5);">₹
+            1500</span>
+          <span
+            style="margin-right: 5%;font-weight: 600;color: #000; font-size: 0.8em; text-decoration: line-through;">₹
+            1750</span>
+          <span style="font-weight: 600;color: rgb(26, 192, 26);font-size: 0.8em;">20%</span>
+        </p>
+      </ion-col>
+      <ion-col size="3" style="margin: auto; display: block;">
+        <p>
+          <span
+            style="background: #fff; border: 1px solid #e9e9e9; padding: 10px; font-size: 1.2em; font-weight: bolder;">3</span>
+        </p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row style="margin-left: 15px;">
+      <ion-col>
+        <span style="font-weight: bolder; font-size: 0.9em;">Shipping Address</span>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col style="border: 1px solid #e9e9e9; margin: 2px 15px; border-radius: 10px;">
+        <p>Customer Name</p>
+        <p style="font-size: 0.845em; margin-top: -13px;">No.12/34, Street Name, Address Line 1,</p>
+        <p style="font-size: 0.845em; margin-top: -13px;">Area Name, Distric Name, Address Line 2,</p>
+        <p style="font-size: 0.845em; margin-top: -13px;">Street Name, Country,</p>
+        <p style="font-size: 0.845em; margin-top: -13px;">Pincode - 123456</p>
+        <p style="color: lightgray">Phone Number: <span style="color: black;">+91 234567890</span></p>
+
+      </ion-col>
+    </ion-row>
+
+    <ion-row style="margin: 5px 15px;">
+      <ion-col>
+        <span style="font-weight: bolder; font-size: 0.9em;">Bill Details</span>
+      </ion-col>
+    </ion-row>
+
+    <ion-row style="border: 1px solid #e9e9e9; margin: 2px 15px; border-radius: 10px;">
+      <ion-col size="9">
+        <p>Items Total</p>
+        <p>Delivery Fees</p>
+        <p>TAX</p>
+        <p>Coupon Discount</p>
+        <div style="border-bottom: 1px solid #e9e9e9"></div>
+        <p>Grand Total</p>
+      </ion-col>
+      <ion-col size="3">
+        <p>&#8377; 1,520.00</p>
+        <p>&#8377; 0.00</p>
+        <p>&#8377; 120.00</p>
+        <p>- &#8377; 125 </p>
+        <div style="border-bottom: 1px solid #e9e9e9"></div>
+        <p>&#8377; 1,520</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row style="margin: 5px 15px;">
+      <ion-col>
+        <span style="font-weight: bolder; font-size: 0.9em;">Payment Method</span>
+      </ion-col>
+    </ion-row>
+
+    <ion-row style="border: 1px solid #e9e9e9; margin: 2px 15px; border-radius: 10px;">
+      <ion-col size="9" style="padding: unset;">
+        <ion-item lines="none">
+          <ion-icon style="color: #ff8635; margin: unset;" name="pricetag" slot="start"></ion-icon>
+          <span style="margin-left: 5px;">Cash On Delivery</span>
+        </ion-item>
+      </ion-col>
+      <ion-col size="3" style="padding: unset;">
+        <p>&#8377; 1,520</p>
+      </ion-col>
+    </ion-row>
+
+    <div class="second-div" style="margin: 15px">
+      <ion-row>
+        <ion-col size="1" style="margin: auto; display: block;">
+          <div class="roundIcon"></div>
+        </ion-col>
+        <ion-col size="7" style="color: #fff;">
+          <span>Order Received</span> <br>
+          <span style="font-size: 0.845em; margin-top: -13px">10:10 AM | 29.01.2021</span>
+        </ion-col>
+        <ion-col size="4" style="color: #fff;">
+          <p>#12XYZ345</p>
+        </ion-col>
+        <div style="border: 1px solid #fff; width: 90%; border-style: dotted;"></div>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="1" style="margin: auto; display: block;">
+          <div class="roundIcon"></div>
+        </ion-col>
+        <ion-col size="7" style="color: #fff;">
+          <span>Pickup</span> <br>
+          <span style="font-size: 0.845em; margin-top: -13px">10:10 AM | 29.01.2021</span>
+        </ion-col>
+        <ion-col size="4" style="color: #fff;">
+          <p>#12XYZ345</p>
+        </ion-col>
+        <div style="border: 1px solid #fff; width: 90%; border-style: dotted;"></div>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="1" style="margin: auto; display: block;">
+          <div class="roundIcon"></div>
+        </ion-col>
+        <ion-col size="7" style="color: #fff;">
+          <span>Payment Received</span> <br>
+          <span style="font-size: 0.845em; margin-top: -13px">10:10 AM | 29.01.2021</span>
+        </ion-col>
+        <ion-col size="4" style="color: #fff;">
+          <p>&#8377; 1,520</p>
+        </ion-col>
+        <div style="border: 1px solid #fff; width: 90%; border-style: dotted;"></div>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="1" style="margin: auto; display: block;">
+          <div class="roundIcon"></div>
+        </ion-col>
+        <ion-col size="7" style="color: #fff;">
+          <span>Order Delivered</span> <br>
+          <span style="font-size: 0.845em; margin-top: -13px">10:10 AM | 29.01.2021</span>
+        </ion-col>
+        <ion-col size="4" style="color: #fff;">
+          <p>#12XYZ345</p>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+
+</ion-content>
