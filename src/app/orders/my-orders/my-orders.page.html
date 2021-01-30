@@ -1,0 +1,56 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar style="padding: 0;">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      My Orders
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background: #ff8635;">
+  <ion-row>
+    <ion-col size="4">
+      <img class="firstImg" src="../../assets/images/deliveryboy_icon.png">
+    </ion-col>
+
+    <ion-col size="8" style="margin: auto; text-align: left;">
+      <p class="vendorTag">Vendor Name</p>
+      <p class="vendorTag" style="font-size: 0.845em;">area name, pincode-123456</p>
+    </ion-col>
+  </ion-row>
+
+  <div class="inside-content">
+    <div style="margin: 25px;" *ngFor="let item of myOrdersData">
+      <ion-row (click)="openOrders()" style="background: #f0fafc; padding: 5px;">
+        <ion-col size="7">
+          <p style="color: #ff8635;">Order ID: {{item.orderid}}</p>
+          <p style="font-size: 0.845em; color: rgb(162, 179, 196); margin-top: -10px;">{{item.datetime}}</p>
+          <p>{{item.user_name}}</p>
+          <p style="font-size: 0.845em; margin-top: -10px;">{{item.address.address}}, {{item.address.city}}, {{item.address.state}} - {{item.address.pincode}}</p>
+        </ion-col>
+        <ion-col size="1">
+          <div style="border-right: 1px solid lightgray; height: 100px; margin-top: 25px;"></div>
+        </ion-col>
+        <ion-col size="4" style="margin:auto; text-align:center;">
+          <p style="font-weight: bold;">{{item.total_products}} Items</p>
+          <p style="color: red; font-weight: bold;">&#8377; {{item.total_product_price}}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row style="background: #d9eff5; padding: 5px;">
+        <ion-col size="6">
+          <p>Status : <span style="color: green;">{{item.order_status}}</span></p>
+        </ion-col>
+        <ion-col size="6">
+          <p> Confirm Order
+            <ion-icon style="color: black; background: #c4ced1;margin-top: 2px; position: absolute;
+            margin-left: 5px;" name="ellipsis-vertical-outline">
+            </ion-icon>
+          </p>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+
+</ion-content>
