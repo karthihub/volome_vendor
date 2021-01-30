@@ -46,7 +46,14 @@ export class ProductListPage implements OnInit {
     this.invokeService.postMethod("getProductInfo/"+product_id,null).then((response: any) => {
       console.log(response);
       this.commonservice.getProductInfo = response.data;
-      this.router.navigate(['/add-products']);
+      this.invokeService.postMethod("category_attributes/"+response.data.category_id,null).then((response: any) => {
+        this.commonservice.select_categoryData = response.data;
+        this.commonservice.isEditProduct = true;
+        this.router.navigate(['/add-products']);
+      }).catch((err) => {
+        this.commonservice.presentToastWithButton(err);
+        console.log(err);
+      });
     }).catch((err) => {
       this.commonservice.presentToastWithButton(err);
       console.log(err);

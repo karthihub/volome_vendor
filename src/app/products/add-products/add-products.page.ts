@@ -65,6 +65,46 @@ export class AddProductsPage implements OnInit {
   ngOnInit() {
     this.category_data = this.commonservice.select_categoryData;
     console.log("category_data", this.category_data);
+
+    if(this.commonservice.isEditProduct){
+    this.req.productID = this.commonservice.getProductInfo.product_id;
+    this.req.productName = this.commonservice.getProductInfo.name;
+    this.req.brandName = this.commonservice.getProductInfo.brand_name;
+    this.req.manufacName = this.commonservice.getProductInfo.manufacturer;
+    this.req.productDescription = this.commonservice.getProductInfo.description;
+    // this.req.HSNcode = this.commonservice.getProductInfo.
+    this.req.SKUvalue = this.commonservice.getProductInfo.sku;
+    this.req.countryOfOrigin = this.commonservice.getProductInfo.country_of_origin;
+    this.req.mrp = this.commonservice.getProductInfo.mrp;
+    this.req.sellerPrice = this.commonservice.getProductInfo.seller_price;
+    // this.req.sellerWarDes = this.commonservice.getProductInfo.
+    this.req.salePrice = this.commonservice.getProductInfo.sales_price;
+    this.req.saleStartDate = this.commonservice.getProductInfo.sales_start_date;
+    this.req.endDate = this.commonservice.getProductInfo.sales_end_date;
+    this.req.ProductDimensionLength = this.commonservice.getProductInfo.product_dimensions.Length.size;
+    this.req.ProductDimensionLengthUnit = this.commonservice.getProductInfo.product_dimensions.Length.unit;
+    this.req.ProductDimensionWidth = this.commonservice.getProductInfo.product_dimensions.Width.size;
+    this.req.ProductDimensionWidthUnit = this.commonservice.getProductInfo.product_dimensions.Width.unit;
+    this.req.ProductDimensionHeight = this.commonservice.getProductInfo.product_dimensions.Height.size;
+    this.req.ProductDimensionHeightUnit = this.commonservice.getProductInfo.product_dimensions.Height.unit;
+    this.req.PackageDimensionLength = this.commonservice.getProductInfo.package_dimension.Length.size;
+    this.req.PackageDimensionLengthUnit = this.commonservice.getProductInfo.package_dimension.Length.unit;
+    this.req.PackageDimensionWidth = this.commonservice.getProductInfo.package_dimension.Width.size;
+    this.req.PackageDimensionWidthUnit = this.commonservice.getProductInfo.package_dimension.Width.unit;
+    this.req.PackageDimensionHeight = this.commonservice.getProductInfo.package_dimension.Height.size;
+    this.req.packageDimensionHeightUnit = this.commonservice.getProductInfo.package_dimension.Height.unit;
+    this.req.productWeight = this.commonservice.getProductInfo.shipping_weight.split(" ")[0];
+    this.req.productWeightUnit = this.commonservice.getProductInfo.shipping_weight.split(" ")[1];
+    // this.req.available_stock = "";
+    // this.req.category_attr = this.commonservice.getProductInfo.
+    this.base64Image = this.commonservice.getProductInfo.image;
+    this.commonservice.select_categoryID = this.commonservice.getProductInfo.category_id;
+
+    var attributes = Object.values(this.commonservice.getProductInfo.attributes);
+      for(let i=0; i<this.category_data.length; i++){
+        this.qtd[i] = attributes[i];
+      }
+    }
   }
 
   addProducts() {
@@ -86,10 +126,14 @@ export class AddProductsPage implements OnInit {
     } else if (!this.req.productDescription) {
       this.commonservice.presentToastWithButton("Please Enter Product Description");
       return false;
-    } else if (!this.req.HSNcode) {
-      this.commonservice.presentToastWithButton("Please Enter HSN code");
-      return false;
-    } else if (!this.req.SKUvalue) {
+    } 
+    
+    // else if (!this.req.HSNcode) {
+    //   this.commonservice.presentToastWithButton("Please Enter HSN code");
+    //   return false;
+    // } 
+    
+    else if (!this.req.SKUvalue) {
       this.commonservice.presentToastWithButton("Please Enter SKU Value");
       return false;
     } else if (!this.req.countryOfOrigin) {
@@ -101,10 +145,14 @@ export class AddProductsPage implements OnInit {
     } else if (!this.req.sellerPrice) {
       this.commonservice.presentToastWithButton("Please Enter Seller Price");
       return false;
-    } else if (!this.req.sellerWarDes) {
-      this.commonservice.presentToastWithButton("Please Enter Seller Warranty Description");
-      return false;
-    } else if (!this.req.saleStartDate) {
+    } 
+    
+    // else if (!this.req.sellerWarDes) {
+    //   this.commonservice.presentToastWithButton("Please Enter Seller Warranty Description");
+    //   return false;
+    // } 
+    
+    else if (!this.req.saleStartDate) {
       this.commonservice.presentToastWithButton("Please Enter Sale Start Date");
       return false;
     } else if (!this.req.endDate) {
@@ -162,10 +210,20 @@ export class AddProductsPage implements OnInit {
       // } else if (!this.req.condition) {
       //   this.commonservice.presentToastWithButton("Please Enter Condition");
       //   return false;
-    }else if (!this.req.available_stock) {
-      this.commonservice.presentToastWithButton("Please Enter Available Stock");
+    } else if(this.req.mrp < this.req.sellerPrice){
+      this.commonservice.presentToastWithButton("Seller Price should be equal or lesser than MRP");
       return false;
-    } else {
+    } else if(this.req.sellerPrice < this.req.salePrice){
+      this.commonservice.presentToastWithButton("Sales Price should be equal or lesser than Seller Price");
+      return false;
+    } 
+    
+    // else if (!this.req.available_stock) {
+    //   this.commonservice.presentToastWithButton("Please Enter Available Stock");
+    //   return false;
+    // } 
+    
+    else {
       console.log("this.qtd---->", this.qtd);
       var tempAttributes = [];
       var featured_image = "";
@@ -177,9 +235,14 @@ export class AddProductsPage implements OnInit {
       }
 
       var tempprofileData = this.base64Image;
+      
+
       for(let i=0; i<tempprofileData.length; i++){
-        var data = tempprofileData[i].split(",");
-        tempprofileData[i] =  data[1];
+        var findValue = tempprofileData[i].indexOf("demo.moziztech.com");
+        if(findValue == "-1"){
+          var data = tempprofileData[i].split(",");
+          tempprofileData[i] =  data[1];
+        }
       }
 
       featured_image = tempprofileData[0];
@@ -194,7 +257,7 @@ export class AddProductsPage implements OnInit {
         "description": this.req.productDescription,
         // "HSNcode": this.req.HSNcode, //
 
-        "available_stock": this.req.available_stock,
+        // "available_stock": this.req.available_stock,
         "sku": this.req.SKUvalue,
         "country_of_origin": this.req.countryOfOrigin,
         "seller_price": this.req.sellerPrice,
@@ -224,10 +287,13 @@ export class AddProductsPage implements OnInit {
       }
       console.log("request Date--?", requestData);
 
-      this.invokeService.postMethod("vendor_addnewproduct", requestData).then((response: any) => {
+      var serviceName = (this.commonservice.isEditProduct)?"vendor_updateproduct/"+this.commonservice.getProductInfo.product_id:"vendor_addnewproduct";
+
+      this.invokeService.postMethod(serviceName, requestData).then((response: any) => {
         console.log(response);
         this.commonservice.presentToastWithButton(response.message);
         // this.navCtrl.pop();
+        this.commonservice.isEditProduct = false;
         this.router.navigate(['/dashboard']);
       }).catch((err) => {
         this.commonservice.presentToastWithButton(err);

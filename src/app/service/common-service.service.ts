@@ -34,6 +34,7 @@ export class CommonServiceService {
   public select_categoryID:any;
   public profileDetails:any;
   public getProductInfo:any;
+  public isEditProduct:boolean = false;
 
   shop_latlang:any = {
     lat : "",
