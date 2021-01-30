@@ -87,7 +87,7 @@ export class InvokeServiceService {
       {
         'Accept': 'application/json, text/plain',
         'Content-Type': 'application/json',
-        'access_token' : this.commonservice.access_token
+        'access_token' : 'vbf1sa' //this.commonservice.access_token
       }
     )
     return headers;

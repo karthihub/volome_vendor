@@ -7,6 +7,61 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content style="--background: #ff8635;">
+  <div style="background: #fff;
+  border-radius: 25px 25px 0 0;
+  z-index: 46;
+  position: absolute;
+  width: 100%;
+  margin-top: 25%;">
 
+    <img src="../../assets/images/deliveryboy_icon.png" style="display: block;
+    border-radius: 60px;
+    width: 7em;
+    height: 7em;
+    margin: -15% auto auto auto;
+    z-index: -1;
+    border: 5px solid #ff8635;
+    padding: 2%;
+    background: #fff;">
+
+    <p style="    margin: 1%;
+    text-align: center;
+    color: #ff8635;
+    font-weight: bolder;
+    font-size: 1em;">vendor_name</p>
+    <p style="margin: 1%;
+    text-align: center;
+    color: #00314f;
+    font-weight: bolder;
+    font-size: 0.85em;margin-bottom: 5%;">Vendor ID : </p>
+
+    <div>
+      <ion-item style="margin-top: 15px; width: 95%;">
+        <ion-label>
+          Monthly Revenue
+        </ion-label>
+      </ion-item>
+      <canvas #monthlyRevenueChart></canvas>
+    </div>
+
+    <div>
+      <ion-item style="margin-top: 15px; width: 95%;">
+        <ion-label>
+          Category Wise Sales
+        </ion-label>
+      </ion-item>
+      <canvas #SalesChart></canvas>
+    </div>
+
+    <div>
+      <ion-item style="margin-top: 15px; width: 95%;">
+        <ion-label>
+          No.of Product Sales
+        </ion-label>
+      </ion-item>
+      <canvas #productSalesChart></canvas>
+    </div>
+
+  </div>
 </ion-content>
