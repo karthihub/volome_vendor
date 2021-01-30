@@ -60,4 +60,10 @@ export class ProductListPage implements OnInit {
     });
   }
 
+  getDiscount(val){
+    var percentage = val.split("%");
+    percentage = parseFloat(percentage).toFixed(2);
+    return percentage;
+  }
+
 }
