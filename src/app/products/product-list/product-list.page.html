@@ -29,12 +29,12 @@
             <img src="{{item.featured_image}}" style="width: 150px;height: 100px;margin-bottom: 5%;">
             <p style="margin: 1%; font-weight: 600;color: #666666;margin-bottom: 5%;display: -webkit-box;
             -webkit-box-orient: vertical;
-            -webkit-line-clamp: 3;
+            -webkit-line-clamp: 3;font-size: 0.95em;
             overflow: hidden;">{{item.name}}</p>
-            <p style="margin-top: 4%;">
+            <p style="margin-top: 4%;font-size: 0.9em;">
               <span style="margin-right: 5%;font-weight: 600;color:rgb(253, 5, 5);text-decoration: line-through;">₹ {{item.mrp}}</span>
               <span style="margin-right: 5%;font-weight: 600;color: #000;">₹ {{item.seller_price}}</span>
-              <span style="font-weight: 600;color: rgb(26, 192, 26);font-size: 0.8em;">{{item.stock_value}}%</span>
+              <span style="font-weight: 600;color: rgb(26, 192, 26);font-size: 0.8em;">{{getDiscount(item.discount_percentage)}}%</span>
             </p>
             <ion-row style="margin: 0;padding: 0;font-size: 0.9em;background: #ebebeb;">
               <ion-col size="6" style="margin: 0;padding: 0;margin-top: 5%;margin-bottom: 5%;border-right: 0.1px solid #8080808c;" (click)="editProduct(item.product_id)">
