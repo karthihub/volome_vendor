@@ -10,6 +10,7 @@ import { InvokeServiceService } from 'src/app/service/invoke-service.service';
 })
 export class MyOrdersPage implements OnInit {
   myOrdersData : any;
+  profile: any;
   req: any = {
     "orderID": "",
     "orderedTime": "",
@@ -33,12 +34,28 @@ export class MyOrdersPage implements OnInit {
       this.commonservice.presentToastWithButton(err);
       console.log(err);
     });
+    this.profile = this.commonservice.profileDetails;
   }
 
-  openOrders() {
-    console.log("order tapped");
-    let navigationExtras: NavigationExtras = { state: { foo: "" } };
-    this.router.navigate(['order-details'], navigationExtras);
+  openOrders(orderID) {
+    this.invokeService.postMethod("vendor_orderdetail/"+orderID,null).then((response: any) => {
+      this.commonservice.orderDetails = response;
+      // let navigationExtras: NavigationExtras = { state: { orderItem: orderDetails } };
+      this.router.navigate(['order-details']);
+    }).catch((err) => {
+      this.commonservice.presentToastWithButton(err);
+      console.log(err);
+    });
+  }
+
+  cancelOrder(orderID){
+    this.invokeService.postMethod("vendor_updateorderstatus/"+orderID,{"status":"Cancelled"}).then((response: any) => {
+      this.commonservice.presentToastWithButton(response.message);
+      this.ngOnInit();
+    }).catch((err) => {
+      this.commonservice.presentToastWithButton(err);
+      console.log(err);
+    });
   }
 
 }

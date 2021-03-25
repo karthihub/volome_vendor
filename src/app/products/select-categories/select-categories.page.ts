@@ -144,7 +144,7 @@ export class SelectCategoriesPage implements OnInit {
       // localStorage.setItem('MyItemsPersisted', tempJson.items);
       // if(response.data){
         this.commonservice.select_categoryData = response.data;
-        this.router.navigate(['/add-products']);
+        this.router.navigate(['/shops-categories']);
       // }else{
       //   this.categoryJson(this.categoriesData);
       // }

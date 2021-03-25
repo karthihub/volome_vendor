@@ -12,12 +12,21 @@ import { InvokeServiceService } from 'src/app/service/invoke-service.service';
 export class ProductListPage implements OnInit {
 
   public productList = [];
+  vendorImg = "../../assets/images/deliveryboy_icon.png";
+  vendorShopName = "xxxxx xxxx";
+  vendorAddress = "";
   constructor(public router: Router,public invokeService: InvokeServiceService,
     public commonservice: CommonServiceService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.getProductData();
+    if(this.commonservice.profileDetails){
+      this.vendorImg = this.commonservice.profileDetails.shop_logo;
+      this.vendorShopName = this.commonservice.profileDetails.shop_name;
+      this.vendorAddress = this.commonservice.profileDetails.location +","+ this.commonservice.profileDetails.district +","+ this.commonservice.profileDetails.state  +","+ this.commonservice.profileDetails.state +", Pincode - "+ this.commonservice.profileDetails.pincode;
+    }
+    
   }
 
   getProductData(){

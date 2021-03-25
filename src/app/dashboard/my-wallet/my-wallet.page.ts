@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IonSlides } from '@ionic/angular';
+import { IonSlides, AlertController } from '@ionic/angular';
 import { CommonServiceService } from 'src/app/service/common-service.service';
 import { InvokeServiceService } from 'src/app/service/invoke-service.service';
 
@@ -33,7 +33,8 @@ export class MyWalletPage implements OnInit {
 
   constructor(public router: Router,public invokeService: InvokeServiceService,
     public commonservice: CommonServiceService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    public alertController: AlertController) {
       this.route.queryParams.subscribe(() => {
         this.getwalletData();
     });
@@ -64,5 +65,49 @@ export class MyWalletPage implements OnInit {
     }else{
       return "../../assets/images/arrow_red.svg";
     }
+  }
+
+  withDrawAmountRequest(val){
+    if(/^\d+$/.test(val)){
+      this.invokeService.postMethod("vendor_widthdraw_req",{"amount":val}).then((response: any) => {
+        console.log(response);
+        this.commonservice.presentToastWithButton(response.message);
+        this.getwalletData();
+      }).catch((err) => {
+        this.commonservice.presentToastWithButton(err);
+        console.log(err);
+      });
+    }else{
+      this.commonservice.presentToastWithButton("Please enter valid amount");
+    }
+    
+  }
+
+ async withDrawAmount(){
+    const alert = await this.alertController.create({
+      inputs: [
+        {
+          name: 'name1',
+          type: 'number',
+          placeholder: "Please enter Amount"
+        }],    
+       buttons: [
+            {
+              text: 'Cancel',
+              role: 'cancel',
+              cssClass: 'secondary',
+              handler: () => {
+                console.log('Confirm Cancel');
+              }
+            }, {
+              text: 'Ok',
+              handler: (alertData) => { //takes the data 
+                console.log(alertData.name1);
+                this.withDrawAmountRequest(alertData.name1);
+            }
+            }
+          ]
+  });
+  await alert.present();
   }
 }

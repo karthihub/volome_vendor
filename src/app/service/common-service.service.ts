@@ -32,9 +32,13 @@ export class CommonServiceService {
   public user_id:any = "";
   public select_categoryData:any;
   public select_categoryID:any;
+  public select_shops_categoryID:any;
+  public select_shops_sub_categoryID:any;
   public profileDetails:any;
   public getProductInfo:any;
   public isEditProduct:boolean = false;
+  public orderDetails:any;
+  public FCMtoken = "";
 
   shop_latlang:any = {
     lat : "",

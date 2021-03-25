@@ -13,6 +13,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class AddProductsPage implements OnInit {
   public base64Image = [];
+  vendorImg = "";
+  vendorShopName = "";
+  vendorAddress = "";
   req: any = {
     "productID": "",
     "productName": "",
@@ -43,10 +46,11 @@ export class AddProductsPage implements OnInit {
     "productWeight": "",
     "productWeightUnit": "",
     "available_stock": "",
-    "category_attr": ""
+    "category_attr": "",
     // "conditionNote": "",
     // "quantity": "",
     // "condition": ""
+    "deal_products": false
   }
   public category_data = [];
   public qtd:any = {};
@@ -65,6 +69,12 @@ export class AddProductsPage implements OnInit {
   ngOnInit() {
     this.category_data = this.commonservice.select_categoryData;
     console.log("category_data", this.category_data);
+
+    if(this.commonservice.profileDetails){
+      this.vendorImg = this.commonservice.profileDetails.shop_logo;
+      this.vendorShopName = this.commonservice.profileDetails.shop_name;
+      this.vendorAddress = this.commonservice.profileDetails.location +","+ this.commonservice.profileDetails.district +","+ this.commonservice.profileDetails.state  +","+ this.commonservice.profileDetails.state +", Pincode - "+ this.commonservice.profileDetails.pincode;
+    }
 
     if(this.commonservice.isEditProduct){
     this.req.productID = this.commonservice.getProductInfo.product_id;
@@ -283,7 +293,10 @@ export class AddProductsPage implements OnInit {
         // "conditionNote": this.req.conditionNote, //
         // "quantity": this.req.quantity, //
         // "condition": this.req.condition //
-        "product_attributes": tempAttributes
+        "product_attributes": tempAttributes,
+        "shopcategory_id": this.commonservice.select_shops_categoryID,
+        "shopsubcategory_id": this.commonservice.select_shops_sub_categoryID, 
+        "deal_products": this.req.deal_products
       }
       console.log("request Date--?", requestData);
 

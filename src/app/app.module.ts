@@ -19,6 +19,7 @@ import { NgxImageCompressService } from 'ngx-image-compress';
 import { Camera } from '@ionic-native/camera/ngx';
 import { Crop } from '@ionic-native/crop/ngx';
 import { File } from '@ionic-native/file/ngx';
+import { FirebaseX } from "@ionic-native/firebase-x/ngx";
 
 @NgModule({
   declarations: [AppComponent],
@@ -39,7 +40,7 @@ import { File } from '@ionic-native/file/ngx';
     NativeGeocoder,
     NgxImageCompressService,
     Camera,
-    Crop,File,
+    Crop,File,FirebaseX,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

@@ -17,7 +17,7 @@
   width: 100%;
   margin-top: 25%;">
 
-    <img src="../../assets/images/deliveryboy_icon.png" style="display: block;
+    <img src="{{vendorImg}}" style="display: block;
     border-radius: 60px;
     width: 7em;
     height: 7em;
@@ -47,7 +47,7 @@
           <span style="font-weight: bolder;
           display: block;
           font-size: 1em;
-          opacity: 0.8;    margin-top: 6%;">Today Orders</span>
+          opacity: 0.8;    margin-top: 6%;">Total Orders</span>
           <!-- <span style="display: block;
           font-size: 0.8em;
           opacity: 0.5;
@@ -60,7 +60,7 @@
     margin: 0;margin-top: 10%;">{{homeProperty.total_orders}}</ion-note>
       </ion-item>
     </ion-col>
-    <ion-col (click)="wallerPage()" size="2" style="background: #ff8635 !important;color: #fff;margin-left: 2%;border-radius: 10px;">
+    <ion-col (click)="myOrdersPage()" size="2" style="background: #ff8635 !important;color: #fff;margin-left: 2%;border-radius: 10px;">
       <img style="width: 100%;display: block;margin: 18% auto;padding: 5%;" src="../../../assets/images/check-list.svg">
     </ion-col>
   </ion-row>
@@ -112,7 +112,7 @@
     margin: 0;margin-top: 10%;">{{homeProperty.total_product}}</ion-note>
       </ion-item>
     </ion-col>
-    <ion-col size="2" style="background: #ff8635 !important;color: #fff;margin-left: 2%;border-radius: 10px;">
+    <ion-col (click)="ProductsPage()" size="2" style="background: #ff8635 !important;color: #fff;margin-left: 2%;border-radius: 10px;">
       <img style="width: 100%;display: block;margin: 18% auto;padding: 5%;" src="../../../assets/images/check-list.svg">
     </ion-col>
   </ion-row>
@@ -125,7 +125,7 @@
           <span style="font-weight: bolder;
           display: block;
           font-size: 1em;
-          opacity: 0.8;    margin-top: 6%;">Today Sales</span>
+          opacity: 0.8;    margin-top: 6%;">Total Sales</span>
           <!-- <span style="display: block;
           font-size: 0.8em;
           opacity: 0.5;
@@ -138,7 +138,7 @@
     margin: 0;margin-top: 10%;">₹ {{homeProperty.total_sale}}</ion-note>
       </ion-item>
     </ion-col>
-    <ion-col size="2" style="background: #ff8635 !important;color: #fff;margin-left: 2%;border-radius: 10px;">
+    <ion-col (click)="wallerPage()" size="2" style="background: #ff8635 !important;color: #fff;margin-left: 2%;border-radius: 10px;">
       <img style="width: 100%;display: block;margin: 18% auto;padding: 5%;" src="../../../assets/images/check-list.svg">
     </ion-col>
   </ion-row>
@@ -147,7 +147,7 @@
 
 <ion-button style="--background: #26b30f;
 margin: 5% auto;
-display: table;">Achivement</ion-button>
+display: table;" (click)="achievementPage()">Achivement</ion-button>
 
 
 <ion-list style="padding: 4%;">

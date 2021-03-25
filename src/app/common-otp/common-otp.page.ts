@@ -33,7 +33,12 @@ export class CommonOtpPage implements OnInit {
       this.commonservice.presentToastWithButton("Please Enter valid OTP");
       return false;
     }else{
-      this.invokeService.postMethod("vendor_verifyotp",this.req).then((response: any) => {
+      var payload = {
+        "mobile": this.req.mobile,
+        "otp": this.req.otp,
+        "fcmToken": this.commonservice.FCMtoken
+      }
+      this.invokeService.postMethod("vendor_verifyotp",payload).then((response: any) => {
         console.log(response);
         this.commonservice.userDetails = response;
         this.commonservice.user_id = response.vendor_id;

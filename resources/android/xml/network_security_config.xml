@@ -3,5 +3,6 @@
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">localhost</domain>
         <domain includeSubdomains="true">demo.moziztech.com</domain>
+        <domain includeSubdomains="true">pvsinfotech.com</domain>
     </domain-config>
 </network-security-config>

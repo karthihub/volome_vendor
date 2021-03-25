@@ -4,6 +4,7 @@ import { IonSlides } from '@ionic/angular';
 import { CommonServiceService } from 'src/app/service/common-service.service';
 import { InvokeServiceService } from 'src/app/service/invoke-service.service';
 import { AppComponent } from '../../app.component';
+import { HttpClient } from '@angular/common/http'
 
 @Component({
   selector: 'app-home',
@@ -19,7 +20,7 @@ export class HomePage implements OnInit {
       maxRatio: 5
     }
   };
-
+  vendorImg:any;
   rate = 3;
   homeData: any;
   homeProperty = {
@@ -37,15 +38,35 @@ export class HomePage implements OnInit {
     private route: ActivatedRoute) {
       this.route.queryParams.subscribe(() => {
         this.getHomeData();
+        this.vendorImg = (this.commonservice.profileDetails.shop_logo)?this.commonservice.profileDetails.shop_logo:"../../assets/images/deliveryboy_icon.png";
     });
      }
 
   ngOnInit() { 
     this.appComponent.updateData();
+    this.invokeService.slientGetMenthod().then((response: any) => {
+      this.commonservice.profileDetails = response.data;
+      this.vendorImg = (this.commonservice.profileDetails.shop_logo)?this.commonservice.profileDetails.shop_logo:"../../assets/images/deliveryboy_icon.png";
+    }).catch((err) => {
+      this.commonservice.presentToastWithButton(err);
+      console.log(err);
+    });
   }
 
   wallerPage(){
     this.router.navigate(['dashboard/my-wallet']);
+  }
+
+  myOrdersPage(){
+    this.router.navigate(['my-orders']);
+  }
+
+  ProductsPage(){
+    this.router.navigate(['product-list']);
+  }achievement
+
+  achievementPage(){
+    this.router.navigate(['dashboard/achievement']);
   }
 
   getHomeData(){

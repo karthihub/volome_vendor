@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { CommonServiceService } from '../service/common-service.service';
 import { InvokeServiceService } from '../service/invoke-service.service';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
+import { FirebaseX } from "@ionic-native/firebase-x/ngx";
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -17,20 +19,31 @@ export class LoginPage implements OnInit {
   constructor(public router: Router,
     public invokeService: InvokeServiceService,
     public commonservice: CommonServiceService,
-    public androidPermissions:AndroidPermissions) { }
+    public androidPermissions:AndroidPermissions,
+    private firebase: FirebaseX,
+    private platform: Platform,) { 
+      this.platform.ready().then(() => {
+        this.firebase.getToken().then(token => {
+          console.log("==token===>", token);
+          this.commonservice.FCMtoken = token;
+        });
+        this.androidPermissions.requestPermissions([this.androidPermissions.PERMISSION.CAMERA,this.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION,this.androidPermissions.PERMISSION.ACCESS_FINE_LOCATION])
+        .then(
+          (res) => {
+            console.log('requestPermission requesting location permissions ', res)
+          },
+          error => {
+            //Show alert if user click on 'No Thanks'
+            // navigator['app'].exitApp();
+            console.log('requestPermission Error requesting location permissions ', error)
+          }
+        );
+      });
+      
+    }
 
   ngOnInit() {
-    this.androidPermissions.requestPermissions([this.androidPermissions.PERMISSION.CAMERA,this.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION,this.androidPermissions.PERMISSION.ACCESS_FINE_LOCATION])
-          .then(
-            (res) => {
-              console.log('requestPermission requesting location permissions ', res)
-            },
-            error => {
-              //Show alert if user click on 'No Thanks'
-              // navigator['app'].exitApp();
-              console.log('requestPermission Error requesting location permissions ', error)
-            }
-          );
+  
   }
 
   dontHaveAccount(){

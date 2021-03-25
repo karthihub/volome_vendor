@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "364156945657",
+    "project_id": "volomevendormobile",
+    "storage_bucket": "volomevendormobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:364156945657:android:1ab7a20cb27b4090644e28",
+        "android_client_info": {
+          "package_name": "com.volome.vendor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "364156945657-iojdi6hbpsboao1phspqn0dbqsn6sbs7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWcd2zVfIXc6pXpzJL5GbTzBt-YGH-a90"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "364156945657-iojdi6hbpsboao1phspqn0dbqsn6sbs7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

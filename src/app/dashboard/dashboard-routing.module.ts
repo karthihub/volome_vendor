@@ -15,7 +15,11 @@ const routes: Routes = [
       {
         path: 'profile',
         loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
-      },    
+      }, 
+      {
+        path: 'coins-package',
+        loadChildren: () => import('./coins-package/coins-package.module').then( m => m.CoinsPackagePageModule)
+      },   
     ]
   },
   {

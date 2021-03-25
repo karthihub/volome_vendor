@@ -1,0 +1,78 @@
+<ion-header class="ion-no-border" >
+  <ion-toolbar style="padding: 0;">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Subcription Details
+    </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background: #ff8635;">
+
+
+  <p style="margin: 5% 0% 0% 0%;font-size: 1.1em;color: #fff;text-align: center;font-weight: 600;padding: 3%;">
+    {{pageTitle}}
+  </p>
+
+  <div style="background: #fff;
+  border-radius: 25px 25px 0 0;
+  z-index: 46;
+  position: absolute;
+  width: 100%;
+  margin-top: 22%;
+  min-height: -webkit-fill-available;
+  height: auto;" *ngIf="subcriptionDetails">
+
+    <div style="margin-bottom: 15%;">
+      <img src="../../../assets/images/coins.png" style="display: block;
+            border-radius: 60px;
+            width: 10em;
+            height: 10em;
+            margin: -20% auto auto auto;
+            z-index: -1;
+            padding: 2%;">
+
+<div  style="text-align: center;margin-top: -31%;color: #fff;">
+  <p  style="margin: 0;font-size: 1.5em;font-family: 'gilroy-bold' !important;margin-top: 2%;">{{validityDays}}</p>
+  <p  style="margin: 0;font-size: 1em;margin-top: 1%;font-weight: bold;">Validity</p>
+</div>
+    </div>
+
+    <!-- <p style="margin: 0; font-size: 1.1em;color: #00314f;text-align: center;font-weight: 600;">{{subcriptionDetails.coins}} Coins for</p>
+    <p style="margin: 0; font-size: 1.1em;color: #00314f;text-align: center;font-weight: 600;">every ₹{{subcriptionDetails.for_spent}} spend</p>
+    <ion-button shape="round" style="--background: #ff8635;font-weight: bold;
+    margin: 5% auto;
+    display: table;">Earn Coins</ion-button> -->
+
+    <div style="background: #fff;">
+      <p style="margin: 0; font-size: 1.1em;color: #ff8635;text-align: center;font-weight: 600;    padding: 3%;">SUBCRIPTION PACKAGES</p>
+
+      <ion-list lines="none" style="--background: #fff;padding: 0;">
+        <ion-item style="--background: #fff;" *ngFor="let item of subcriptionList" (click)="payWithRazorpay(item.package_id, item.price)">
+          <ion-label style="background: #00314f;border-radius: 10px 0 0 10px;
+          color: #fff;
+          padding: 6%;
+          margin-right: 13%;">
+            <span style="opacity: 0.6;font-weight: bold;">{{item.title}}</span>
+            <!-- <span style="float: right;margin-right: 5%;font-weight: bold;font-size: 1.1em;">₹ {{item.price}}</span> -->
+          </ion-label>
+          <span slot="end" style="background: #ff8635;
+          color: #fff;
+          padding: 7% 4%;
+          border: 5px solid #00314f;
+          border-radius: 40px;margin: 0;margin-right: 2%;
+          position: absolute;
+          right: 0;">
+            <!-- <img src="../../../assets/images/round.png" /> -->
+            <span style="display: block;text-align: center;
+            font-family: 'gilroy-bold' !important;">₹ {{item.price}}</span>
+            <!-- <span style="display: block;text-align: center;">coins</span> -->
+          </span>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>
+

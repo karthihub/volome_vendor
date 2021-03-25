@@ -12,12 +12,12 @@
 <ion-content style="--background: #ff8635;">
   <ion-row>
     <ion-col size="4">
-      <img class="firstImg" src="../../assets/images/deliveryboy_icon.png">
+      <img class="firstImg" src="{{vendorImg}}">
     </ion-col>
 
     <ion-col size="8" style="margin: auto; text-align: left;">
-      <p>Vendor Name</p>
-      <p style="font-size: 0.845em;">area name, pincode-123456</p>
+      <p>{{vendorShopName}}</p>
+      <p style="font-size: 0.845em;">{{vendorAddress}}</p>
     </ion-col>
   </ion-row>
   <div class="inside-content">
@@ -383,6 +383,11 @@
         </ion-input>
         <ion-icon name="pricetags" slot="start"></ion-icon>
       </ion-item> -->
+
+      <ion-item style="margin-top: 5% !important">
+        <ion-label>Deal Product</ion-label>
+        <ion-checkbox slot="end" [(ngModel)]="req.deal_products"></ion-checkbox>
+      </ion-item>
 
       <ion-button (click)="addProducts()">ADD PRODUCTS</ion-button>
     </div>

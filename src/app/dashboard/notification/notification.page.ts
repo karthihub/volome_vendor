@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { IonSlides, AlertController } from '@ionic/angular';
+import { CommonServiceService } from 'src/app/service/common-service.service';
+import { InvokeServiceService } from 'src/app/service/invoke-service.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-notification',
@@ -7,64 +12,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotificationPage implements OnInit {
   notificationData: any;
-  constructor() { }
+
+  constructor(public router: Router,public invokeService: InvokeServiceService,
+    public commonservice: CommonServiceService,
+    private route: ActivatedRoute,
+    public alertController: AlertController) {}
 
   ngOnInit() {
-    this.notificationData = {
-      data: [{
-        "date": "29th Jan 2021",
-        "notifcationDetails": [{
-          "message": "New Order placed",
-          "date": "29th Jan 2021",
-          "OrderID": "#1234555",
-          "notitficatioType": "order"
-        },{
-          "message": "Order Delivered",
-          "date": "29th Jan 2021",
-          "OrderID": "#1234555",
-          "notitficatioType": "order"
-        }, {
-          "message": "Payment Received",
-          "date": "29th Jan 2021",
-          "OrderID": "#1234555",
-          "notitficatioType": "payment"
-        }, {
-          "message": "Amount Withdraw",
-          "date": "29th Jan 2021",
-          "OrderID": "#1234555",
-          "notitficatioType": "payment"
-        }, {
-          "message": "General Notfication",
-          "date": "29th Jan 2021",
-          "OrderID": "#1234555",
-          "notitficatioType": "general"
-        }]
-      },
-      {
-        "date": "30th Jan 2021",
-        "notifcationDetails": [{
-          "message": "General Notfication",
-          "date": "29th Jan 2021",
-          "notitficatioType": "general"
-        },
-        {
-          "message": "General Notfication",
-          "date": "29th Jan 2021",
-          "notitficatioType": "general"
-        }]
-      },
-      {
-        "date": "31th Jan 2021",
-        "notifcationDetails": [{
-          "message": "Order has been placed",
-          "date": "29th Jan 2021",
-          "OrderID": "#1234555",
-          "notitficatioType": "order"
-        }]
-      }]
-    }
-
-    console.log("notificationData--->", this.notificationData)
+    this.invokeService.postMethod("vendor_notifications",null).then((response: any) => {
+      console.log(response);
+      this.notificationData = response.data;
+    }).catch((err) => {
+      this.commonservice.presentToastWithButton(err);
+      console.log(err);
+    });
   }
   
+  getDataTime(dateTime){
+    // 2021-03-03 14:37:01
+    return moment(dateTime.split(" ")[0], 'YYYY.MM.DD').format('Do MMM YYYY');
+  }
 }

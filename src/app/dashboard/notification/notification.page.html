@@ -9,29 +9,23 @@
 
 <ion-content>
   <div class="inner-content">
-    <div *ngFor="let data of notificationData.data">
-      <ion-item lines="none">
-        <ion-label>{{data.date}}</ion-label>
-      </ion-item>
-  
-      <ion-row *ngFor="let item of data.notifcationDetails; let i=index">
+      <ion-row *ngFor="let item of notificationData; let i=index">
         <ion-col size="1" style="margin: auto; text-align : center;">
           
-          <ion-icon *ngIf="item.notitficatioType == 'order'" style="background: #7AE4AC;" class="icon" name="cart"></ion-icon>
-          <ion-icon *ngIf="item.notitficatioType == 'payment'" style="background: #fad075;" class="icon" name="logo-usd"></ion-icon>
-          <ion-icon *ngIf="item.notitficatioType == 'general'" style="background: #847AE4;" class="icon" name="notifications"></ion-icon>
+          <ion-icon *ngIf="item.node_type == 'Order'" style="background: #7AE4AC;" class="icon" name="cart"></ion-icon>
+          <ion-icon *ngIf="item.node_type == 'payment'" style="background: #fad075;" class="icon" name="logo-usd"></ion-icon>
+          <ion-icon *ngIf="item.node_type == 'general'" style="background: #847AE4;" class="icon" name="notifications"></ion-icon>
         </ion-col>
   
-        <ion-col size="6">
-          <p>{{item.message}}</p>
-          <p style="font-size: 0.845em; margin-top: -13px">{{item.date}}</p>
+        <ion-col size="10">
+          <p>{{item.notification_text}}</p>
+          <p style="font-size: 0.845em; margin-top: -13px">{{getDataTime(item.created_date)}}</p>
         </ion-col>
         <div style="border-right: 1px solid #e9e9e9; height: 50px; margin-top: 20px;"></div>
-        <ion-col size="4">
+        <!-- <ion-col size="4">
           <p *ngIf="item.OrderID">Order ID</p>
           <p *ngIf="item.OrderID" style="margin-top: -13px; font-weight: bold;">{{item.OrderID}}</p>
-        </ion-col>
+        </ion-col> -->
       </ion-row>
     </div>
-  </div>
 </ion-content>
